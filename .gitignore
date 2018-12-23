@@ -1,0 +1,6 @@
+.bundle
+.sass-cache
+Gemfile.lock
+_site
+*.gem
+_posts/2018-12-14-05-sql-preparation-des-donnees-et-jupyter-notebook.md

@@ -1,0 +1,44 @@
+---
+layout: search
+lang: en
+---
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container" >
+
+    <h1 class="header center black-text">Search results</h1>
+    
+    <br>
+  </div>
+</div>
+
+
+<div class="row">
+<ul id="search-results"></ul>
+</div>
+
+
+<script>
+  window.store = {
+    {% for post in site.posts %}
+
+    {% if post.lang == page.lang %}
+
+          "{{ post.url | slugify }}": {
+            "title": "{{ post.title | xml_escape }}",
+            "author": "{{ post.author | xml_escape }}",
+            "category": "{{ post.category | xml_escape }}",
+            "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+            "url": "{{site.baseurl}}{{ post.url | xml_escape }}",
+          "lang": "{{ post.lang | xml_escape }}",
+          "read": "{{ 'Read more' | xml_escape }}"
+          }
+
+      {% unless forloop.last %},{% endunless %}
+
+        {% endif %}
+    {% endfor %}
+  };
+</script>
+<script src="{{ 'js/lunr.min.js' | relative_url }}"></script>
+<script src="{{ 'js/search.js' | relative_url }}"></script>

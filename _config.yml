@@ -1,0 +1,61 @@
+# Site settings
+title: Paris Fire Brigade Data Challenge
+author: Benjamin Berhault
+email: benjamin.berhault@hotmail.com
+description-fr: "Ce challenge est organisé dans le cadre du recrutement, début 2019, de 2 ou 3 stagiaires au sein des pompiers de Paris cherchant à travailler dans l'analyse de données, la data science et/ou la business intelligence. Tout autre participant est cependant le bienvenue."
+description-en: "This challenge is organized as part of the recruitment, in early 2019, of 2 to 3 trainees in the Paris fire service seeking to work in in data analysis, data science and / or business intelligence. Any other participant is however welcome."
+
+# Because we use a redirection to a custom domain we have to set baseurl this way
+baseurl: "/data-challenge"
+# otherwise it would have been baseurl: "/my_personal_blog"
+url: "http://paris-fire-brigade.github.io/" # "http://benjamin-berhault.github.io/benjamin-berhault.github.io"
+tagline: ""
+
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Google Analytics
+google_analytics: UA-127477560-2
+
+# twitter_username: 
+github_username:  benjamin-berhault
+
+sass:
+    style: compressed
+
+# Disqus Comments
+disqus:
+    # Leave shortname blank to disable comments site-wide.
+    # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+    shortname: blog-4xh2nyx9aq
+
+# disable built-in Rouge highlighting in Jekyll
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+#  - jekyll-multiple-languages-plugin
+
+index:
+  fr: index.html
+  en: home.html
+
+tutos:
+  fr: tutoriels.html
+  en: tutorials.html
+
+challenges:
+  fr: defi.html
+  en: challenge.html
+
+feed:
+  en: /feed.xml
+  fr: /flux.xml
+# languages: ["fr", "en"]
+
+kramdown:
+   syntax_highlighter_opts:
+      disable : true

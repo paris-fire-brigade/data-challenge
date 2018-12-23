@@ -1,0 +1,94 @@
+<nav class="indigo lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <div class="left hide-on-med-and-down">
+            
+            {% if page.lang == "fr" %}
+              <form action="{{site.baseurl}}/recherche.html" method="get">
+            {% else %}
+              <form action="{{site.baseurl}}/search.html" method="get">
+            {% endif %}   
+
+              <div style="float: left"><input type="text" id="search-box" name="query" placeholder="Search"></div>
+              <!--<input type="submit" value="Search" class="waves-effect waves-light blue">-->
+
+              <div style="vertical-align:middle;float: left; padding-left: 10px;">
+                <a href="#" onclick="$(this).closest('form').submit()" id="download-button">
+                  <i class="material-icons" style="vertical-align:bottom;">search</i>
+                </a>
+              </div>
+
+            </form>
+        </div>
+        <!--<a id="logo-container" class="brand-logo" href="{{ "/" | relative_url }}">image</a>-->
+    {% assign default_paths = site.pages | map: "path" %}
+    {% assign page_paths = site.header_pages | default: default_paths %}
+
+          <ul class="right hide-on-med-and-down">
+
+<!--
+            <li><script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+<script type="IN/MemberProfile" data-id="http://www.linkedin.com/in/benjaminberhault" data-format="hover" data-related="false"></script></li>
+ -->
+            <li>
+              {% if page.lang == "fr" %}
+                <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;">Accueil</span></a>
+              {% else %}
+                <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;">Home</span></a>
+              {% endif %}   
+            </li>
+
+            {% if page_paths %}
+                {% for path in page_paths %}
+                    {% assign my_page = site.pages | where: "path", path | first %}
+                    {% if my_page.title %}
+                      {% if my_page.lang == page.lang and my_page.layout == "page" %}
+                        <li><a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+                      {% endif %}  
+                    {% endif %}
+                {% endfor %}
+            {% endif %} 
+
+            <li>
+              {% if page.lang == "en" %}
+                <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;"><img src="{{ '/images/France-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
+              {% else %}
+                <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;"><img src="{{ '/images/United-Kingdom-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
+              {% endif %}   
+            </li>
+
+          </ul>
+
+          <ul id="nav-mobile" class="side-nav">
+
+            <li>
+              {% if page.lang == "fr" %}
+                <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;">Accueil</span></a>
+              {% else %}
+                <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;">Home</span></a>
+              {% endif %}   
+            </li>
+                        
+            {% if page_paths %}
+                {% for path in page_paths %}
+                    {% assign my_page = site.pages | where: "path", path | first %}
+                    {% if my_page.title %}
+                      {% if my_page.lang == page.lang and my_page.layout == "page" %}
+                        <li><a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+                      {% endif %}  
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+
+            <li>
+              {% if page.lang == "en" %}
+                <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;"><img src="{{ '/images/France-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
+              {% else %}
+                <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;"><img src="{{ '/images/United-Kingdom-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
+              {% endif %}   
+            </li>
+          </ul>        
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>

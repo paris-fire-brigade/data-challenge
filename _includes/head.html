@@ -1,0 +1,39 @@
+<head>
+
+    {% if site.google_analytics and jekyll.environment == 'production' %}
+    {% include google-analytics.html %}
+    {% endif %}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta name="google-site-verification" content="B80FCLBjVtNMciOTAVrNC31BDzYpks5t6Evzrj-gyXQ" />
+    <meta name="msvalidate.01" content="ACA4530322B20FB2975AE517E44ACD8E" />
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+
+    {% if page.lang == "fr" %}
+    <meta name="description" content="{{ page.excerpt | default: site.description-fr | strip_html | normalize_whitespace | escape }}" />
+    {% else %}
+    <meta name="description" content="{{ page.excerpt | default: site.description-en | strip_html | normalize_whitespace | escape }}" />
+    {% endif %} 
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="{{ "/assets/materialize.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
+
+    {% if page.lang == "fr" %}
+    <link rel="alternate" href="{{site.baseurl}}/{{page.alternate}}" hreflang="en" />
+    {% else %}
+    <link rel="alternate" href="{{site.baseurl}}/{{page.alternate}}" hreflang="fr" />
+    {% endif %} 
+
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}" />
+    <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="{{ '/images/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/prism.css' | relative_url }}">
+
+</head>

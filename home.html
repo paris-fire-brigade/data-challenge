@@ -1,0 +1,178 @@
+---
+layout: home
+title: "Home"
+ref: index
+lang: en
+---
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+
+    <div class="row" style="padding-top: 25px;">
+
+      <center>
+        <div class="col grid s12 m6 l3">
+          <img src="{{ '/images/logo.png' | relative_url }}" class="responsive-img"> 
+        </div>
+        <div class="col grid s12 m6 l9" style="display: table;">
+          <div style="display: table-cell; vertical-align: middle;">
+            <h1>Data challenge</h1>
+            <h3>Paris Fire Brigade</h3>
+          </div>
+        </div>
+      </center>
+
+     </div>
+<br>
+     <div class="row center" >
+      <div class="col grid s12 m6 l6">
+      <a href="https://www.indeed.fr/voir-emploi?t=stage+data+analyst+data+scientist+business+intelligence+hf&jk=c100061956b2b08e&_ga=2.21609339.1599938280.1544210840-1918805417.1543523411" id="download-button" class="btn-large waves-effect waves-light blue">
+        <i class="material-icons" style="vertical-align:middle">send</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Apply on Indeed</strong></big></span></a>
+      </div>
+        <div class="col grid s12 m6 l6">
+      <a href="{{ '/challenge.html' | relative_url }}" id="download-button" class="btn-large waves-effect waves-light blue">
+        <i class="material-icons" style="vertical-align:middle">sentiment_very_satisfied</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Access the challenge</strong></big></span></a>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+
+    <!--   Icon Section   -->
+    <div class="row">
+
+
+		<div class="col grid s12 m6 l9">
+			<p>This challenge is organized as part of the <b>recruitment</b>, in early 2019, of 2 to 3 <b>trainees</b> in the Paris fire service seeking to work in <b>in data analysis, data science and / or business intelligence</b>. Any other participant is however welcome.</p>
+			<p>The challenge concerns an operational problem of the rescue service of the Paris Fire Brigade. The anonymised data of the service are made available.</p>
+			<p>Candidates must conduct in a <a href="https://jupyter.org/">Jupyter Notebook</a> the analysis of the dataset and answer the problem even extend it. We will pay close attention to the graphical transcription of data, comments and conclusions. A geographical representation is unavoidable.</p>
+
+
+
+			<ul>
+			  <li>Challenge opening date: <b> Friday 14 December 2018</b></li> 
+			  <li>Challenge closing date: <b> Sunday 20 January 2019</b></li>
+			</ul>
+
+		</div>
+		<div class="col grid s12 m6 l3 ">
+			<center><a href="{{ '/docs/affiche_data_challenge_bspp.pdf' | relative_url }}"><img src="{{ '/images/affiche_data_challenge_bspp_preview.png' | relative_url }}" class="responsive-img" title="Download the challenge poster"></a></center>
+		</div>
+
+    </div>
+
+    <div class="row">
+      
+    <!--
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <a href="{{ '/blog/' | relative_url }}"><h2 class="center"><i class="material-icons">chat</i></h2></a>
+          <a href="{{ '/blog/' | relative_url }}"><h4 class="center black-text">Posts</h4></a>
+
+          <p class="light">Integer ornare velit sem, ut ullamcorper felis pharetra id. Nulla eleifend venenatis quam, ut mollis nunc tincidunt nec. Aenean consectetur orci id blandit cursus. Sed pulvinar tempus nisl at lacinia. Phasellus suscipit tortor risus, vel mollis odio lacinia vitae.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <a href="{{ '/notebooks/' | relative_url }}"><h2 class="center"><i class="material-icons">library_books</i></h2></a></a></a></a>
+          <a href="{{ '/notebooks/' | relative_url }}"><h4 class="center black-text">Notebooks</h4></a></a></a>
+
+          <p class="light">Sed ultricies gravida velit, et vestibulum est viverra sit amet. Cras mauris magna, luctus vel purus a, sodales imperdiet nibh. Proin ac dictum velit. Proin eu scelerisque eros. Nunc a dui nec tortor ultricies vestibulum eu vitae purus. Maecenas ut ligula felis. Ut id interdum turpis. Nunc at sem in magna semper condimentum.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <a href="{{ '/projects/' | relative_url }}"><h2 class="center"><i class="material-icons">star</i></h2></a></a>
+          <a href="{{ '/projects/' | relative_url }}"><h4 class="center black-text">Projects</h4></a>
+
+          <p class="light">Cras libero felis, facilisis viverra tincidunt at, pharetra eget enim. Duis pellentesque nisl leo, ut aliquam metus ullamcorper id. Morbi ac nunc at enim consequat porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum convallis quam non cursus finibus.</p>
+        </div>
+      </div>
+
+    -->
+    
+    </div>
+
+  </div>
+
+</div>
+<div style="background: #ddd">
+  <div class="container last-post">
+    <section>
+      <h4>Latest tutorials published</h4>
+      <div class="row">
+        {% assign variable = 0 %}
+
+        {% for post in site.posts %}
+
+    	{% if post.lang == page.lang %}
+
+        {% if variable == 3 %}
+        {% break %}
+
+        {% else %}
+        {% assign variable = variable | plus: 1 %}
+
+        <div class="col s12">
+          <div class="card hoverable">
+            <div class="card-content">
+              <span id="post-title" class="card-title">
+                <b>
+                  {% if post.categories contains "project" %}
+                  <font style="font-size: 1.1em;" class="blue-text">[Project]</font>&nbsp;
+                  {% elsif post.categories contains "notebook" %}
+                  <font style="font-size: 1.1em;" class="blue-text">[Notebook]</font>&nbsp;
+                  {% endif %}
+                  {{post.title}}
+                </b></span>
+
+                <p id="post-date">
+                  <i class="material-icons">date_range</i>
+                  {{post.date | date: "%d/%m/%Y"}}
+                </p>
+                <p id="post-content">{{post.excerpt | remove: '<p>' | remove: '</p>'}}</p>
+              </div>
+              <div class="card-action">
+                <a href="{{ post.url | relative_url }}">
+                  Read more <i class="material-icons" style="vertical-align:middle">touch_app</i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {% endif %}
+
+          {% endif %}
+
+
+          {% endfor %}
+
+        </div>
+        <!--
+        <ul class="collection">
+        {% for post in site.posts %}
+        <li class="collection-item avatar">
+          {% assign date_format = site.minima.date_format | default: "%m/%d" %}
+          <div class="date-post">{{ post.date | date: date_format }}</div>
+          <span class="title"><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
+          <p>
+             {{ post.content | truncatewords: 10 }}
+          </p>
+          <a href="{{ post.url | relative_url }}" class="secondary-content"><i class="material-icons">navigate_next</i></a>
+        </li>
+        {% endfor %}
+        </ul>  
+      -->
+
+    </section>
+  </div>
+</div>
+
+
+
