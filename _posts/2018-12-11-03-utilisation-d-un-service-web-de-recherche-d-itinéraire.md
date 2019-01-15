@@ -36,7 +36,7 @@ Ayant à disposition les traces GPS des véhicules de secours, vous pourriez vou
 Prenons un exemple avec la suite de géolocalisations suivante <i>(longitude,latitude;longitude,latitude;...)</i> :
 
 ```console
-2.25975,48.923557;2.248389,48.922695;2.235361,48.916889;2.2255,48.91325;2.225833,48.914028;2.225861,48.914001;2.225833,48.914055;2.225861,48.914055;2.226417,48.914333;2.230083,48.91486;2.23725,48.917557;2.242917,48.920029;2.24775,48.922417;2.249278,48.922749;2.252528,48.922916;2.256556,48.923054;2.261778,48.922779;2.262389,48.922638;2.262333,48.922611;2.262361,48.922611;2.262194,48.922585;2.262194,48.922585;2.262194,48.922585;2.262167,48.922585;2.262139,48.922585;2.262167,48.922585;2.262167,48.922554;2.262194,48.922554
+2.341618,48.908885;2.343194,48.905945;2.344167,48.911415;2.341778,48.918194;2.342972,48.922474;2.343090,48.922413
 ```
 
 Pour récupérer l'itinéraire correspondant à ces positions GPS via le service à disposition, vous pouvez utiliser le code suivant :
@@ -46,9 +46,9 @@ import json
 import requests
 from pprint import pprint
 
-url = 'http://209.97.130.63:5000/trip/v1/driving/'
-url += '2.25975,48.923557;2.248389,48.922695;2.235361,48.916889;2.2255,48.91325;2.225833,48.914028;2.225861,48.914001;2.225833,48.914055;2.225861,48.914055;2.226417,48.914333;2.230083,48.91486;2.23725,48.917557;2.242917,48.920029;2.24775,48.922417;2.249278,48.922749;2.252528,48.922916;2.256556,48.923054;2.261778,48.922779;2.262389,48.922638;2.262333,48.922611;2.262361,48.922611;2.262194,48.922585;2.262194,48.922585;2.262194,48.922585;2.262167,48.922585;2.262139,48.922585;2.262167,48.922585;2.262167,48.922554;2.262194,48.922554'
-url += '?source=first&destination=last'
+url = 'http://209.97.130.63:5000/route/v1/car/'
+url += '2.341618,48.908885;2.343194,48.905945;2.344167,48.911415;2.341778,48.918194;2.342972,48.922474;2.343090,48.922413'
+url += '?alternatives=false&steps=false&geometries=polyline&overview=simplified&annotations=false'
 
 response = requests.get(url)
 json_data = json.loads(response.text)
@@ -60,29 +60,49 @@ Le module `pprint` (pour pretty print) permet l'affichage de structures de donn�
 pprint(json_data)
 ```
 ```console
+{
+   "code":"Ok",
+   "routes":[
+      {
+         "geometry":"wkoiHmkhMdAqDbDbE~EoHfCyDee@G{h@W?lMQp@S^wJoM[iB_A@Kp@{ElBj@hBGp@mDdDIuD?W",
+         "legs":[
+            {
+               "steps":[
 
-{'code': 'Ok',
- 'trips': [{'distance': 6372.6,
-            'duration': 632.3,
-            'geometry': 'gkriHmjxLp@zE_@xGhAvCh@vC{@hLHvEMDPxJv@jG`@hDh@jC~M`]rF|M|FjShCtJpK``@p@nE~BfFnDbLe@d@{AvA{@cC??AC?Cs@sBuCiI~BkD}T{x@sDkMgVem@wAgPGuHNiAHg@k@iEl@{KqBwG^yGy@uExCqBBiHFqANg@??????????????????W~ACbIqCjB',
-            'legs': [{'distance': 266.3,
-                      'duration': 24.1,
-                      'steps': [],
-                      'summary': '',
-                      'weight': 24.1},
-                     {'distance': 551.4,
-                      'duration': 50.4,
-                      'steps': [],
-                      ...
+               ],
+               "distance":359.3,
+               "duration":50.2,
+               "summary":"",
+               "weight":50.2
+            },
+            [...]
+         ],
+         "distance":2846.7,
+         "duration":273.6,
+         "weight_name":"routability",
+         "weight":273.6
+      }
+   ],
+   "waypoints":[
+      {
+         "hint":"2-AEgP___39_AAAAfwAAAAkAAAAAAAAAWTypQgAAAAD04LtAAAAAAH8AAAB_AAAACQAAAAAAAAD1BAAAwbsjAPtH6gLyuiMAVUrqAgEArwKra8kH",
+         "distance":68.644532,
+         "name":"Rue des Entrepreneurs",
+         "location":[
+            2.341825,
+            48.908283
+         ]
+      },
+      [...]
 ```
 Vous pouvez récupérer la géométrie de l'itinéraire évalué avec les paramètres suivants :
 
 ```python
-json_data["trips"][0]["geometry"]
+json_data["routes"][0]["geometry"]
 ```
 Géométrie retournée :
 ```console
-gkriHmjxLp@zE_@xGhAvCh@vC{@hLHvEMDPxJv@jG`@hDh@jC~M`]rF|M|FjShCtJpK``@p@nE~BfFnDbLe@d@{AvA{@cC??AC?Cs@sBuCiI~BkD}T{x@sDkMgVem@wAgPGuHNiAHg@k@iEl@{KqBwG^yGy@uExCqBBiHFqANg@??????????????????W~ACbIqCjB
+wkoiHmkhMdAqDbDbE~EoHfCyDee@G{h@W?lMQp@S^wJoM[iB_A@Kp@{ElBj@hBGp@mDdDIuD?W
 ```
 
 Vous pouvez vérifier la réponse obtenue avec la [Google Interactive Polyline Encoder Utility](https://developers.google.com/maps/documentation/utilities/polylineutility). Pour cela copier/coller la géométrie dans le champ <b>Encoded Polyline</b> et cliquez sur <b>Decode polyline</b>. Dans mon cas, j'obtiens l'exacte polyline attendue correspondant aux traces GPS transmises.
