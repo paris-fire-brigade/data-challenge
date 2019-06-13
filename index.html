@@ -1,10 +1,9 @@
 ---
 layout: home
-title: "Accueil"
+title: "Home"
 ref: index
-lang: fr
+lang: en
 ---
-
 
 <div class="section no-pad-bot" id="index-banner">
   <div class="container">
@@ -12,30 +11,24 @@ lang: fr
     <div class="row" style="padding-top: 25px;">
 
       <center>
-        <div class="col grid s12 m6 l3">
-          <img src="{{ '/images/logo.png' | relative_url }}" class="responsive-img"> 
+        <div class="col grid s12 m6 l4">
+          <img src="{{ '/images/directions.jpg' | relative_url }}" class="responsive-img"> 
         </div>
-        <div class="col grid s12 m6 l9" style="display: table;">
+        <div class="col grid s12 m6 l8" style="display: table;">
           <div style="display: table-cell; vertical-align: middle;">
-            <h1>Data challenge</h1>
-            <h3>Brigade de Sapeurs-Pompiers de Paris</h3>
+            <h3>Paris Fire Brigade Data Challenge</h3>
+            <big><b>Predicting response times of the Paris Fire Brigade vehicles</b></big>
+
           </div>
         </div>
       </center>
-          </div>
 
+     </div>
      <div class="row center" >
-      <div class="col grid s12 m6 l6">
-      	<p>
-      <a href="https://www.indeed.fr/voir-emploi?t=stage+data+analyst+data+scientist+business+intelligence+hf&jk=c100061956b2b08e&_ga=2.21609339.1599938280.1544210840-1918805417.1543523411" id="download-button" class="btn-large waves-effect waves-light blue">
-        <i class="material-icons" style="vertical-align:middle">send</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Postuler sur Indeed</strong></big></span></a></p>
-      </div>
-        <div class="col grid s12 m6 l6">
-        	<p>
-      <a href="{{ '/defi.html' | relative_url }}" id="download-button" class="btn-large waves-effect waves-light blue">
-        <i class="material-icons" style="vertical-align:middle">sentiment_very_satisfied</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Accéder au challenge</strong></big></span></a>
-    </p>
-        </div>
+        <p>
+          <a href="{{site.baseurl}}/challenge.html" id="download-button" class="btn-large waves-effect waves-light blue">
+        <i class="material-icons" style="vertical-align:middle">sentiment_very_satisfied</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Challenge description</strong></big></span></a>
+      </p>
       </div>
 
   </div>
@@ -47,21 +40,17 @@ lang: fr
     <!--   Icon Section   -->
     <div class="row">
 
-		<div class="col grid s12 m6 l9">
-			<p>Ce challenge est organisé dans le cadre du <b>recrutement</b>, début 2019, de 2 ou 3 <b>stagiaires</b> au sein des pompiers de Paris cherchant à travailler dans l'<b>analyse de données, la data science et/ou la business intelligence</b>. Tout autre participant est cependant le bienvenu.</p>
-			<p>Le challenge porte sur une problématique opérationnelle du service de secours de la Brigade de Sapeurs-Pompiers de Paris. Des données anonymisées issues du service sont mises à disposition.</p>
-			<p>Les candidats doivent réaliser au sein d’un <a href="https://jupyter.org/">Jupyter Notebook</a> l'analyse du jeu de données et répondre à la problématique voire l'étendre.
-			Nous porterons une grande attention à la transcription graphique des données, commentaires et conclusions. Une représentation géographique est incontournable.</p>
 
-			<ul>
-			  <li>Date d'ouverture du challenge : <b>Vendredi 14 Décembre 2018</b></li> 
-			  <li>Date de clôture du challenge : <b>Dimanche 20 janvier 2019</b></li>
-			</ul>
+    <div class="col grid s12">
+      The response time is one of the most important factors for emergency services because their ability to save lives and rescue people depends on it.<br>
+      <br>
+      A non-optimal choice of an emergency vehicle for a rescue request may lengthen the arrival time of the rescuers and impact the future of the victim. This choice is therefore highly critical for emergency services and directly rely on their ability to predict precisely the arrival time of the different units available.
+      <ul>
+        <li>Challenge opening date: <b> X June 2019</b></li> 
+        <li>Challenge closing date: <b> 31 December 2019</b></li>
+      </ul>
+    </div>
 
-		</div>
-		<div class="col grid s12 m6 l3 ">
-			<center><a href="{{ '/docs/affiche_data_challenge_bspp.pdf' | relative_url }}"><img src="{{ '/images/affiche_data_challenge_bspp_preview.png' | relative_url }}" class="responsive-img" title="Téléchargez l'affiche du challenge"></a></center>
-		</div>
 
     </div>
 
@@ -106,13 +95,13 @@ lang: fr
 <div style="background: #ddd">
   <div class="container last-post">
     <section>
-      <h4>Derniers tutoriels publiés</h4>
+      <h4>Latest tutorials published</h4>
       <div class="row">
         {% assign variable = 0 %}
 
         {% for post in site.posts %}
 
-    	{% if post.lang == page.lang %}
+      {% if post.lang == page.lang and post.categories contains "post" %}
 
         {% if variable == 3 %}
         {% break %}
@@ -141,7 +130,7 @@ lang: fr
               </div>
               <div class="card-action">
                 <a href="{{ post.url | relative_url }}">
-                  Lire <i class="material-icons" style="vertical-align:middle">touch_app</i>
+                  Read more <i class="material-icons" style="vertical-align:middle">touch_app</i>
                 </a>
               </div>
             </div>
@@ -150,6 +139,7 @@ lang: fr
           {% endif %}
 
           {% endif %}
+
 
           {% endfor %}
 
@@ -173,5 +163,6 @@ lang: fr
     </section>
   </div>
 </div>
+
 
 

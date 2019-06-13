@@ -241,6 +241,11 @@ Une alternative à l'utilisation d'un fichier .whl est l'installation manuelle d
 
 {% comment %}
 
+## Installation de R
+```console
+conda install -c r r-essentials
+```
+
 ## Sous Linux - Installation de l'environnement de travail
 
 Téléchargez la version d'Anaconda supportant la dernière version de <b>Python 3</b> : [https://www.anaconda.com/download/#linux](https://www.anaconda.com/download/#linux)

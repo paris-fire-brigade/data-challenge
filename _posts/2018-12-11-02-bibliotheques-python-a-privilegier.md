@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "02 - Bibliothèques Python à privilégier"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: fr
 ---

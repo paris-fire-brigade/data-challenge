@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "03 - Use of a route search web service"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: en
 ---

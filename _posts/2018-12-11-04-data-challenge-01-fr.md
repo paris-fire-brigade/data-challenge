@@ -1,12 +1,10 @@
 ---
-layout: page
+layout: post
 comments: true
 title: "Challenge"
-categories: [project, post]
+categories: [challenge]
 author: "Benjamin Berhault"
 lang: fr
-ref: challenge
-alternate: challenge.html
 ---
 
 <div class="section no-pad-bot" id="index-banner">
@@ -36,18 +34,21 @@ alternate: challenge.html
 
 La Brigade de Sapeurs-Pompiers de Paris assure les missions de secours à victimes et de protection contre l'incendie sur Paris, le 92, 93 et 94.
 
-<h2>Problématiques</h2>
-Dans le cadre du recrutement introduit en page d'accueil, il est demandé candidats de traiter une des problématiques suivantes :
-<ul>
-  <li>Certains tronçons routiers et périodes de circulation sur Paris, les départements du 92, 93 et 94 sont problématiques <u>lors</u> de l'engagement des secours, serez-vous capable de les identifier ?</li>
-  <li>Estimer les <a href="https://fr.wikipedia.org/wiki/Zone_de_chalandise">zones de chalandises</a> à 10 minutes des centres de secours, pour différentes tranches horaires de la journée (vous n'avez pas besoin de l'emplacement des centres de secours pour évaluer ces zones).</li>
-  <li>Le système actuel d'engagement du service de secours utilise un modèle d'estimation des temps de transit des véhicules de secours très rigide, seriez-vous capable d'en élaborer un plus pertinent fonction par exemple: de l'heure de la journée, jour de la semaine ou jour du weekend, période de l'année ou conditions météorologiques.</li>
-  <li>Etes-vous capable d'étendre le spectre de votre analyse menant à une information pouvant potentiellement intéresser les gestionnaires du service de secours.</li>
-</ul>
+<h2>Problématique à traiter</h2>
+<div class="card-panel amber lighten-4"><big>Certains tronçons routiers et périodes de circulation sur Paris, les départements du 92, 93 et 94 sont problématiques <u>lors</u> de l'engagement des secours, serez-vous capable de les identifier ?</big></div>
 
 <p>Les déplacements de véhicules nous intéressant pour cette analyse sont ceux ayant lieux lors du transit vers un lieu de demande de secours, c'est-à-dire les déplacements entre les positions <b>Parti</b> et <b>Présenté</b>. (cf. Statuts opérationnels)</p>
 
 <p>A noter que certains véhicules de secours ne remontent pas de positions GPS.</p>
+
+<p><b>Echéance :</b> le 20 janvier 2019</p>
+
+<h4>Autres problématiques optionnelles</h4>
+<ul>
+  <li>Estimer les <a href="https://fr.wikipedia.org/wiki/Zone_de_chalandise">zones de chalandises</a> à 10 minutes des centres de secours, pour différentes tranches horaires de la journée (vous n'avez pas besoin de l'emplacement des centres de secours pour évaluer ces zones).</li>
+  <li>Le système actuel d'engagement du service de secours utilise un modèle d'estimation des temps de transit des véhicules de secours très rigide, seriez-vous capable d'en élaborer un plus pertinent fonction par exemple: de l'heure de la journée, jour de la semaine ou jour du weekend, période de l'année ou conditions météorologiques.</li>
+  <li>Etes-vous capable d'étendre le spectre de votre analyse menant à des trouvailles pouvant potentiellement intéresser les gestionnaires du service de secours.</li>
+</ul>
 
 <h2>Tutoriels</h2>
 Une consultation des <a href="{{ '/tutoriels.html' | relative_url }}">tutoriels</a> mis à disposition est fortement recommandé. Ils sont là pour vous aider.
@@ -55,7 +56,7 @@ Une consultation des <a href="{{ '/tutoriels.html' | relative_url }}">tutoriels<
 <h2>Restitution des travaux</h2>
 <ul>
   <li>Les travaux seront obligatoirement restitués au sein d'un ou plusieurs Jupyter Notebook (fichier .ipynb) en Python 3 de préférence, R sera cependant toléré.</li>
-  <li>A transmettre par mail à <a href="mailto:benjamin.berhault@pompiersparis.fr?subject=Soumission%20relative%20au%20Paris%20Fire%20Brigade%20Data%20Challenge&amp;body=Bonjour%E2%80%9A%0AVeuillez%20trouver%20en%20pièce%20jointe%20le%20Notebook%20résultant%20de%20mon%20travail%20concernant%20le%20mini%20challenge%20des%20pompiers%20de%20Paris%20d%C2%B4exploitation%20de%20données.">benjamin.berhault@pompiersparis.fr</a></li>
+  <li>A transmettre <b>au plus tard le 20 janvier 2019</b> par mail à <a href="mailto:benjamin.berhault@pompiersparis.fr?subject=Soumission%20relative%20au%20Paris%20Fire%20Brigade%20Data%20Challenge&amp;body=Bonjour%E2%80%9A%0AVeuillez%20trouver%20en%20pièce%20jointe%20le%20Notebook%20résultant%20de%20mon%20travail%20concernant%20le%20mini%20challenge%20des%20pompiers%20de%20Paris%20d%C2%B4exploitation%20de%20données.">benjamin.berhault@pompiersparis.fr</a></li>
   <li>Nous porterons une grande attention à la transcription graphique des données et conclusions.</li>
   <li>Un rendu géographique est fortement conseillé.</li>
 </ul>

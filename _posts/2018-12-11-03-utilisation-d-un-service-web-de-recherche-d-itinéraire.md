@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "03 - Utilisation d'un service web de recherche d'itinéraire"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: fr
 ---

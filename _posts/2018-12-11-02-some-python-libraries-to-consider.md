@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "02 - Some Python libraries to consider"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: en
 ---

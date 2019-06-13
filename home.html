@@ -11,32 +11,24 @@ lang: en
     <div class="row" style="padding-top: 25px;">
 
       <center>
-        <div class="col grid s12 m6 l3">
-          <img src="{{ '/images/logo.png' | relative_url }}" class="responsive-img"> 
+        <div class="col grid s12 m6 l4">
+          <img src="{{ '/images/directions.jpg' | relative_url }}" class="responsive-img"> 
         </div>
-        <div class="col grid s12 m6 l9" style="display: table;">
+        <div class="col grid s12 m6 l8" style="display: table;">
           <div style="display: table-cell; vertical-align: middle;">
-            <h1>Data challenge</h1>
-            <h3>Paris Fire Brigade</h3>
+            <h3>Paris Fire Brigade Data Challenge</h3>
+            <big><b>Predicting response times of the Paris Fire Brigade vehicles</b></big>
+
           </div>
         </div>
       </center>
 
      </div>
-     
      <div class="row center" >
-      <div class="col grid s12 m6 l6">
       	<p>
-      		<a href="https://www.indeed.fr/voir-emploi?t=stage+data+analyst+data+scientist+business+intelligence+hf&jk=c100061956b2b08e&_ga=2.21609339.1599938280.1544210840-1918805417.1543523411" id="download-button" class="btn-large waves-effect waves-light blue">
-        <i class="material-icons" style="vertical-align:middle">send</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Apply on Indeed</strong></big></span></a>
+      		<a href="https://challengedata.ens.fr/providers/challenges/21/" id="download-button" class="btn-large waves-effect waves-light blue">
+        <i class="material-icons" style="vertical-align:middle">sentiment_very_satisfied</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>ENS Data challenge platform</strong></big></span></a>
     	</p>
-      </div>
-      <div class="col grid s12 m6 l6">
-      	<p>
-      		<a href="{{ '/challenge.html' | relative_url }}" id="download-button" class="btn-large waves-effect waves-light blue">
-        <i class="material-icons" style="vertical-align:middle">sentiment_very_satisfied</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong>Access the challenge</strong></big></span></a>
-        	</p>
-        </div>
       </div>
 
   </div>
@@ -49,22 +41,12 @@ lang: en
     <div class="row">
 
 
-		<div class="col grid s12 m6 l9">
-			<p>This challenge is organized as part of the <b>recruitment</b>, in early 2019, of 2 to 3 <b>trainees</b> in the Paris fire service seeking to work in <b>in data analysis, data science and / or business intelligence</b>. Any other participant is however welcome.</p>
-			<p>The challenge concerns an operational problem of the rescue service of the Paris Fire Brigade. The anonymised data of the service are made available.</p>
-			<p>Candidates must conduct in a <a href="https://jupyter.org/">Jupyter Notebook</a> the analysis of the dataset and answer the problem even extend it. We will pay close attention to the graphical transcription of data, comments and conclusions. A geographical representation is unavoidable.</p>
-
-
-
-			<ul>
-			  <li>Challenge opening date: <b> Friday 14 December 2018</b></li> 
-			  <li>Challenge closing date: <b> Sunday 20 January 2019</b></li>
-			</ul>
-
+		<div class="col grid s12">
+		  The response time is one of the most important factors for emergency services because their ability to save lives and rescue people depends on it.<br>
+      <br>
+      A non-optimal choice of an emergency vehicle for a rescue request may lengthen the arrival time of the rescuers and impact the future of the victim. This choice is therefore highly critical for emergency services and directly rely on their ability to predict precisely the arrival time of the different units available.
 		</div>
-		<div class="col grid s12 m6 l3 ">
-			<center><a href="{{ '/docs/affiche_data_challenge_bspp.pdf' | relative_url }}"><img src="{{ '/images/affiche_data_challenge_bspp_preview.png' | relative_url }}" class="responsive-img" title="Download the challenge poster"></a></center>
-		</div>
+
 
     </div>
 
@@ -115,7 +97,7 @@ lang: en
 
         {% for post in site.posts %}
 
-    	{% if post.lang == page.lang %}
+    	{% if post.lang == page.lang and post.categories contains "post" %}
 
         {% if variable == 3 %}
         {% break %}

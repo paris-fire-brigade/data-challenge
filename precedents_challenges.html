@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "Tutoriels"
-ref: tutos
+comments: true
+title: "Précédents challenges"
+categories: [challenge]
+author: "Benjamin Berhault"
 lang: fr
-alternate: tutorials.html
+ref: challenges
+alternate: past_challenges.html
 ---
 
 <div class="section no-pad-bot" id="index-banner">
@@ -17,11 +20,13 @@ alternate: tutorials.html
 
 <div class="row">
 
+
+
   {% assign counter = 0 %}
     {% assign sorted = site.posts | sort: 'title' | reverse %}
     {% for post in sorted %}
 
-    {% if post.lang == page.lang and post.categories contains "post" %}
+    {% if post.lang == page.lang and post.categories contains "challenge" %}
 
       {% capture _ %}{% increment counter %}{% endcapture %}
 
@@ -46,7 +51,7 @@ alternate: tutorials.html
           <div class="card-action">
     <!--        <a href="{{ post.url | relative_url }}"> -->
             <a href="{{site.baseurl}}{{ post.url }}">
-              Lire <i class="material-icons" style="vertical-align:middle">touch_app</i>
+              Read more <i class="material-icons" style="vertical-align:middle">touch_app</i>
             </a>
           </div>
         </div>

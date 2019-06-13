@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "05 - Using data from a database"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: en
 ---

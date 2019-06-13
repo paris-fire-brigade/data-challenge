@@ -24,7 +24,7 @@ alternate: tutoriels.html
     {% assign sorted = site.posts | sort: 'title' | reverse %}
     {% for post in sorted %}
 
-    {% if post.lang == page.lang %}
+    {% if post.lang == page.lang and post.categories contains "post" %}
 
       {% capture _ %}{% increment counter %}{% endcapture %}
 

@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "04 - Jupyter et les commandes magiques"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: fr
 ---

@@ -20,103 +20,232 @@ alternate: defi.html
 
 
 <div class="row">
-  <div class="col grid s12 m6 l3">
-    <img src="{{ '/images/data_challenge.jpg' | relative_url }}" class="responsive-img">
+  <div class="col grid s12 m6 l4">
+    <img src="{{ '/images/directions.jpg' | relative_url }}" class="responsive-img">
   </div>
-  <div class="col grid s12 m6 l9 ">
-    <big><b>Page content</b></big>
-      <ul>
-        <li>Problem</li>
-        <li>Tutorials</li>
-        <li>Works submission</li>
-        <li>Data</li>
-        <li>External sources of potentially relevant data</li>
-      </ul>
-  </div>
-</div>
+  <div class="col grid s12 m6 l8 ">
+    The response time is one of the most important factors for emergency services because their ability to save lives and rescue people depends on it. <br>
 
-The Paris Fire Brigade provides rescue and fire protection missions on Paris and the departments 92, 93 and 94. 
-
-<h2>Problem</h2>
-<div class="card-panel amber lighten-4">
-<big>Some road sections and periods of traffic in Paris, the departments of 92, 93 and 94 are problematic <u>during</u> the delivery of emergency relief, will you be able to identify them?</big>
-</div>
-
-<p>The vehicle movements we are interested in for this analysis are those that occurred during the transit to a place of emergency request, that is to say movements between the <b>Departed</b> and <b>Presented</b> positions. (see Operational Status)</p>
-
-<p>Note that some emergency vehicles do not transmit their GPS positions.</p>
-
-<p><b>Due date:</b> January 20, 2019</p>
-
-<h4>Other optional issues</h4>
-<ul>
-  <li>Estimate the <a href="https://fr.wikipedia.org/wiki/Zone_de_chalandise">catchment areas</a> 10 minutes from the rescue centers, for different time slots of the day (you do not need the location of the rescue centers to evaluate these areas).</li>
-  <li>The current dispatch system uses a model of estimation of the transit times for emergency vehicles very rigid, would you be able to elaborate a more relevant estimate using for example: the time of the day, day of the week or day of the weekend, road traffic mearsures or weather conditions.</li>
-  <li>Are you able to extend the spectrum of your analysis leading to findings that managers of a rescue service might be interested in.</li>
-</ul>
-
-<h2>Tutorials</h2>
-A consultation of the <a href="{{site.baseurl}}/tutorials.html">tutorials</a> is highly recommended. They are here to help you.
-
-<h2>Works submission</h2>
-<ul>
-  <li>The works will necessarily be restored within one or more Jupyter Notebook (file .ipynb) in Python 3 preferably, however R will be tolerated.</li>
-  <li>Must be sent <b>no later than the 20th of January 2019</b> by email to <a href="mailto:benjamin.berhault@pompiersparis.fr?subject=Soumission%20relative%20au%20Paris%20Fire%20Brigade%20Data%20Challenge&amp;body=Bonjour%E2%80%9A%0AVeuillez%20trouver%20en%20pièce%20jointe%20le%20Notebook%20résultant%20de%20mon%20travail%20concernant%20le%20mini%20challenge%20des%20pompiers%20de%20Paris%20d%C2%B4exploitation%20de%20données.">benjamin.berhault@pompiersparis.fr</a></li>
-  <li>We will pay close attention to the graphical transcription of data and conclusions.</li>
-  <li>Geographical rendering is strongly recommended.</li>
-</ul>
-
-<h2>Data</h2>
-<div style="display: flex; align-items:center; text-align: center;">
-  <img src="{{ '/images/csv_icon.png' | relative_url }}"><a href="{{ '/data/data.zip' | relative_url }}">Download the dataset</a>
-</div>
-  <br>
-The data cover a period from <b>Monday, September 5, 2016</b> to <b>Sunday, October 30, 2016</b> inclusive, or 8 weeks.
-
-<h4>Dataset columns</h4>
-<ul>
-  <li><b>Date</b> - Date time of the observed value</li>
-  <li><b>Longitude</b> - Longitude of the emergency vehicle GPS position</li>
-  <li><b>Latitude</b> - Latitude of the emergency vehicle GPS position</li>
-  <li><b>Véhicule de secours</b> - Emergency Vehicle Identifier</li>
-  <li><b>Famille de véhicule de secours</b> - Family of emergency vehicle</li>
-  <li><b>Statut opérationnel</b> - Operational status of the emergency vehicle, manually entered by crew</li>
-  <li><b>Numéro intervention</b> - Identifier of the rescue request to which the emergency vehicle has been allocated</li>
-  <li><b>Type intervention</b> - Color referring to an emergency request category</li>
-  <li><b>Availability</b> - Emergency vehicle availability based on status (0: unavailable, 1: available)</li>
-  <li><b>Centre de secours</b> - Identifier of the fire station from which the emergency vehicle came</li>
-</ul>
-
-<h4>Operational statutes</h4>
-A emergency vehicle transmits various radio statutes during an intervention for a rescue request, within the dataset these have been reduced to the essential information:
-<ul>
-  <li><b>Sélection</b> - selection of rescue vehicle in the dispatch application</li>
-  <li><b>Parti (Departed)</b> - the vehicle begins its route leading to emergency request place</li>
-  <li><b>Présenté (Presented)</b> - the vehicle arrives at the place of the emergency request</li>
-  <li><b>Transport hôpital</b> - the vehicle starts transporting a victim to a hospital</li>
-  <li><b>Arrivée hôpital</b> - the vehicle arrives at the hospital</li>
-  <li><b>Quitte hôpital</b> - the vehicle leaves the hospital</li>
-  <li><b>Rentré</b> - the vehicle has returned positioned at its parking spot (a fire station)</li>
-  <li><b>Quitte les lieux</b> - because the vehicle can also simply leave the scene of an intervention without having to carry a victim</li>
-  <li><b>Indisponible</b> - for various reasons the vehicle can be put in the unavailable position</li>
-  <li><b>Non pertinent</b> - statutes without interest for that study</li>
-</ul>
-
-<h2>External sources of potentially relevant data</h2>
-<ul>
-  <li><a href="https://download.geofabrik.de/europe/france/ile-de-france.html">OpenStreetMap data of the region Ile-de-France</a> (nevertheless the <a href="{{ site.baseurl }}{% post_url 2018-12-11-03-utilisation-d-un-service-web-de-recherche-d-itinéraire %}">API</a> available can also provide you with a lot of relevant information for your analysis)</li>
-  <li>Atmospheric parameters measured or observed (data source: <a href="https://donneespubliques.meteofrance.fr/?fond=produit&id_produit=90&id_rubrique=32">https://donneespubliques.meteofrance.fr</a>)
-    <ul>
-      <li><a href="{{ '/data/meteo_synop.201609.csv.gz' | relative_url }}">Data from September 2016</a></li>
-      <li><a href="{{ '/data/meteo_synop.201610.csv.gz' | relative_url }}">Data from October 2016</a></li>
-    </ul>
-  </li>
-  <li><a href="https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/">Paris traffic data from permanent sensors</a>
-    <ul>
-      <li><a href="https://opendata.paris.fr/api/datasets/1.0/comptages-routiers-permanents/attachments/2016_paris_donnees_trafic_capteurs_zip/">2016 data</a></li>
-      <li><a href="https://opendata.paris.fr/explore/dataset/referentiel-comptages-routiers/download/?format=csv&timezone=Europe/Berlin&use_labels_for_header=true">Geographical repository for traffic data from permanent sensors</a></li>
-    </ul>
-  </li>
-</ul>
-
+A non-optimal choice of an emergency vehicle for a rescue request may lengthen the arrival time of the rescuers and impact the future of the victim. This choice is therefore highly critical for emergency services and directly relies on their ability to predict precisely the arrival time of the different units available.<br>
 <br>
+<b><i>NB: Any use of the image or name of the Paris Fire Brigade is subject to authorization from the Paris Fire Brigade.</i></b>
+      <ul>
+        <li>Challenge opening date: <b> X June 2019</b></li> 
+        <li>Challenge closing date: <b> 31 December 2019</b></li>
+      </ul>
+
+  </div>
+</div>
+
+
+<big><b>Page content</b></big>
+  <ul>
+    <li>Challenge</li>
+    <li>Dataset description</li>
+    <li>External sources of potentially relevant data</li>
+    <li>Starting script</li>
+  </ul>
+
+  <br>
+<h3>Challenge</h3>
+
+This challenge is hosted by the Ecole Normale Supérieure (ENS) data platform.
+
+<div class="row center">
+  <p>
+    <a href="https://challengedata.ens.fr/providers/challenges/21/" id="download-button" class="btn-large waves-effect waves-light blue disabled">
+  <i class="material-icons" style="vertical-align:middle">send</i>&nbsp;&nbsp;<span style="vertical-align:middle;font-family:Roboto,sans-serif;"><big><strong><!--Access to the ENS data platform-->Will be launched shortly...</strong></big></span></a>
+</p>
+</div>
+
+<div class="card-panel teal lighten-4">
+<center><big><b>For this challenge you will have to predict the response times of the Paris Fire Brigade vehicles.</b></big></center>
+</div>
+
+The response times of the Paris Fire Brigade vehicles is the delay between:<br>
+<ul>
+  <li>the selection of a rescue vehicle (the time when a rescue team is warned)</li>
+  <li>and the rescue team arrival time at the scene of the request (information sent manually via portable radio)</li>
+</ul>
+This measurement is composed by the 2 following periods of time:
+<ul>
+  <li>the activation period of the rescue team</li>
+  <li>the transit time of the rescue team</li>
+</ul>
+
+<big><b>Resources to consult for this challenge</b></big>
+<ul>
+  <li><a href="https://medium.com/crim/predicting-the-response-times-of-firefighters-using-data-science-da79f6965f93">Using Data Science to Predict Response Times of Firefighters</a> 
+  <li><a href="https://eng.uber.com/engineering-an-efficient-route/">How Uber Engineers an Efficient Route</a>
+</ul>
+
+<h3>Dataset description</h3>
+<big><b>Terms and Conditions of data usage:</b></big><br>
+<ul>
+  <li>The data of the Paris Fire Brigade are the property of the Paris Fire Brigade and can not be transferred to others without the explicit agreement of the Paris Fire Brigade.</li>
+  <li>The data provided as part of the challenge is intended for use only in this context. Any other use without the explicit agreement of the Paris Fire Brigade is forbidden.</li>
+</ul>
+<br>
+The dataset covers the entire year 2018 for which inoperable data have been squeezed out.<br>
+<br>
+<big><b>Training data (219337 lines):</b></big>
+<ul>
+  <li>x_train.csv</li>
+  <li>y_train.csv</li>
+</ul>
+<br>
+<big><b>Test data (108033 lines):</b></big>
+<ul/>
+  <li>x_test.csv</li>
+  <li>y_test.csv</li>
+</ul>
+<br>
+<big><b>Input parameters (x_train.csv and x_test.csv):</b></big>
+<ul> 
+  <li><b>[ID]</b> <code>emergency vehicle selection</code>: identifier of the selection instance of an emergency vehicle for an intervention</li>
+  <li>Intervention
+    <ul>
+      <li><code>intervention</code>: identifier of the intervention</li>
+      <li>Alert reason
+        <ul>
+          <li><code>alert reason category</code> (category): alert reason category</li>
+          <li><code>alert reason</code> (category): alert reason</li>
+        </ul>
+      </li>
+      <li>Address
+        <ul>
+          <li><code>intervention on public roads</code> (boolean): 1 when it concerns an intervention on public roads, 0 otherwise</li>
+          <li><code>floor</code> (int): floor of the intervention</li>
+          <li><code>location of the event</code> (category): qualifies the location of the emergency request, for example: entrance hall, boiler room, motorway, etc.</li>
+          <li><code>longitude intervention</code> (float): approximate longitude of the intervention address</li>
+          <li><code>latitude intervention</code> (float): approximate latitude of the intervention address</li>
+        </ul>
+      </li>
+      <li>Emergency vehicle
+        <ul>
+          <li><code>emergency vehicle</code>: identifier of the emergency vehicle
+            <ul>
+              <li><code>emergency vehicle type</code> (category): type of the emergency vehicle</li>
+              <li><code>rescue center</code> (category): identifier of the rescue center to which belong the vehicle (parking spot of the emergency vehicle)</li>
+            </ul>
+          </li>
+          <li><code>selection time</code> (datetime): selection time of the emergency vehicle
+            <ul>
+              <li><code>date key selection</code> (int): selection date in YYYYMMDD format</li>
+              <li><code>time key selection</code> (int): selection time in HHMMSS format</li>
+            </ul>
+          </li>
+          <li>State of the emergency vehicle preceding its selection for an intervention
+            <ul>
+              <li>Operational status of the vehicle preceding its selection
+                <ul>
+                  <li><code>status preceding selection</code> (category): status of the emergency vehicle prior to selection. An emergency vehicle is in various statuses during an intervention:
+                    <ul>
+                      <li> <i><b>Selection</b> - selection of the emergency vehicle by the rescue commitment application</i></li>
+                      <li> <i><b>Departed</b> - the vehicle starts its route to the location of the emergency request</i></li>
+                      <li> <i><b>Presented</b> - the vehicle arrives at the location of the request</i></li>
+                      <li> <i><b>Hospital transportation</b> - the vehicle starts its transport of a victim to hospital</i></li>
+                      <li> <i><b>Hospital arrival</b> - the vehicle arrives at the hospital</i></li>
+                      <li> <i><b>Leaving hospital</b> - the vehicle leaves the hospital</i></li>
+                      <li> <i><b>Returned</b> - the vehicle has returned to its parking spot</i></li>
+                      <li> <i><b>Leave the premises</b> - because the vehicle can also simply leave the scene of an intervention without having to transport any victim</i></li>
+                      <li> <i><b>Not available</b> - for various reasons the vehicle can be in an unavailable position</i></li>
+                      <li> <i><b>Not relevant</b> - statutes without interest</i></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><code>delta status preceding selection-selection</code> (int): number of seconds before the vehicle was selected when its previous status was entered</li>
+            </ul>
+          </li>
+          <li><code>departed from its rescue center</code> (boolean) : 1 when the vehicle departed from its rescue center (emergency vehicle parking spot), 0 otherwise</li>
+          <li>GPS position of the vehicle before departure
+            <ul>
+              <li><code>longitude before departure</code> (float): longitude of the position of the vehicle preceding his departure</li>
+              <li><code>latitude previous departure</code> (float): latitude of the position of the vehicle preceding his departure</li>
+              <li><code>delta position gps previous departure-departure</code> (int): number of seconds before the selection of the vehicle where its GPS position was recorded (when not parked at its emergency center)</li>
+            </ul>
+          </li>
+          <li>GPS tracks
+            <ul>
+              <li><code>GPS tracks departure-presentation</code> (float pair list): successive GPS positions (*longitude,latitude;longitude,latitude,* etc.) of the vehicle between departure and presentation. This information is for informational purposes to study vehicle behaviors. (The beacons, emitting the GPS positions of vehicles, are currently not always lit)</li>
+              <li><code>GPS tracks departure-presentation datetime</code> (datetime list): datetime associated with successive GPS positions between the departure and the presentation of the vehicle.</li>
+            </ul>
+          </li>
+          <li>Estimated route
+            <ul>
+              <li><code>OSRM estimated route</code> (json object): service route response of an OSRM instance (http://project-osrm.org/docs/v5.15.2/api/#route-service) setup with the Ile-de-France OpenStreetMap data</li>
+              <li><code>OSRM estimated distance</code> (float): distance calculated by the OSRM route service</li>
+              <li><code>OSRM estimated duration</code> (float): transit delay calculated by the OSRM route service</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<big><b>Output parameters (y_train.csv and y_test.csv):</b></big>
+<ul>
+  <li> <b>[ID]</b> <code>emergency vehicle selection</code>: identifier of a selection instance of an emergency vehicle for an intervention</li>
+  <li> <b>[TO PREDICT]</b> <code>delta selection-departure</code> (int): elapsed time in seconds between the selection and the departure of the emergency vehicle</li>
+  <li> <b>[TO PREDICT]</b> <code>delta departure-presentation</code> (int): elapsed time in seconds between the departure of the emergency vehicle and its presentation on the intervention scene</li>
+  <li> <b>[TO PREDICT]</b> <code>delta selection-presentation</code> (int): elapsed time in seconds between the selection of the emergency vehicle and its presentation on the intervention scene (delta selection-departure + delta departure-presentation)</li>
+</ul>
+
+
+<h3>External data sources potentially relevant</h3>
+<ul>
+  <li><a href="https://download.geofabrik.de/europe/france/ile-de-france.html">Ile-de-France OpenStreetMap Data</a> that could be used with a routing engine like <a href="https://github.com/Project-OSRM/osrm-backend">OSRM</a></li>
+  <li><a href="https://donneespubliques.meteofrance.fr">Atmospheric parameters measured or observed</a></li>
+  <li><a href="https://opendata.paris.fr/explore/dataset/comptages-routiers-permanents/information/">Paris traffic data from permanent sensors under pavement</a></li>
+  <li><a href="https://opendata.paris.fr/explore/dataset/referentiel-comptages-routiers/download/?format=csv&timezone=Europe/Berlin&use_labels_for_header=true">Geographic repository for traffic data from permanent sensors</a></li>
+</ul>
+
+<h3>Starting script</h3>
+The following script is aimed to be a starting point for the participants.
+
+<pre class="language-python"><code class="language-python">
+import pandas as pd
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+# Data reading
+x_train = pd.read_csv('./x_train.csv', sep=',')
+y_train = pd.read_csv('./y_train.csv', sep=',')
+x_test = pd.read_csv('./x_test.csv', sep=',')
+
+x_train_transit = x_train[['OSRM estimated distance','intervention on public roads','floor']]
+y_train_transit = y_train[['delta departure-presentation']]
+x_test_transit = x_test[['OSRM estimated distance','intervention on public roads','floor']]
+
+# Create a predictive model for the 'delta departure-presentation'
+# based on 'OSRM estimated distance', 'intervention on public roads' and 'floor'
+polynomial_features= PolynomialFeatures(degree=3)
+x_train_transit_poly = polynomial_features.fit_transform(x_train_transit)
+model = LinearRegression()
+model.fit(x_train_transit_poly, y_train_transit)
+
+# Prediction of the 'delta selection-presentation'
+x_test_transit_poly = polynomial_features.fit_transform(x_test_transit)
+y_selection_presentation_predicted = y_train['delta selection-departure'].median() + model.predict(x_test_transit_poly)
+
+# Create a submission file
+submission = pd.concat([pd.DataFrame(x_test[['emergency vehicle selection']].values), \
+           pd.DataFrame(np.full((len(x_test), 1), y_train['delta selection-departure'].median())), \
+           pd.DataFrame(model.predict(x_transit_test_poly)), \
+           pd.DataFrame(y_selection_presentation_predicted)], \
+           axis=1)
+
+submission.columns = list(y_train.columns.values)
+
+submission.set_index('emergency vehicle selection', inplace=True)
+
+submission.to_csv('./submission.csv', sep=",")
+
+#### Evaluation function ####
+# from sklearn.metrics import r2_score
+# 
+# r2_score(observed_values,predited_values)
+#############################
+</code></pre>

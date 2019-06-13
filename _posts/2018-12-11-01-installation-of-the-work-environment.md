@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "01 - Installation of the work environment"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: en
 ---

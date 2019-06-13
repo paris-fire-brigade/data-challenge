@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title: "04 - Jupyter and magic commands"
-categories: post
+categories: [post]
 author: "Benjamin Berhault"
 lang: en
 ---

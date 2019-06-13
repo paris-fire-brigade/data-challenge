@@ -30,10 +30,10 @@
 <script type="IN/MemberProfile" data-id="http://www.linkedin.com/in/benjaminberhault" data-format="hover" data-related="false"></script></li>
  -->
             <li>
-              {% if page.lang == "fr" %}
-                <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;">Accueil</span></a>
+              {% if page.lang == "en" %}
+                <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;">Home</span></a>
               {% else %}
-                <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;">Home</span></a>
+                <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;">Accueil</span></a>
               {% endif %}   
             </li>
 
@@ -48,6 +48,7 @@
                 {% endfor %}
             {% endif %} 
 
+            <!--
             <li>
               {% if page.lang == "en" %}
                 <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;"><img src="{{ '/images/France-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
@@ -55,6 +56,7 @@
                 <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;"><img src="{{ '/images/United-Kingdom-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
               {% endif %}   
             </li>
+            -->
 
           </ul>
 
@@ -79,7 +81,7 @@
                 {% endfor %}
             {% endif %}
 
-
+            <!--
             <li>
               {% if page.lang == "en" %}
                 <a href="{{site.baseurl}}/index.html"><span title="Version française" style="height:100%;"><img src="{{ '/images/France-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
@@ -87,6 +89,8 @@
                 <a href="{{site.baseurl}}/home.html"><span title="Switch to english version" style="height:100%;"><img src="{{ '/images/United-Kingdom-Flag.ico' | relative_url }}" height="40px" style="display: table-cell;vertical-align: middle;text-align:center;"></span></a>
               {% endif %}   
             </li>
+            -->
+
           </ul>        
 
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
