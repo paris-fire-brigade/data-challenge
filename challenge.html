@@ -80,7 +80,7 @@ This measurement is composed by the 2 following periods of time:
 </ul>
 
 <h3>Dataset description</h3>
-<big><b>Terms and Conditions of data usage:</b></big><br>
+<big><b>Terms and conditions of data usage:</b></big><br>
 <ul>
   <li>The data of the Paris Fire Brigade are the property of the Paris Fire Brigade and can not be transferred to others without the explicit agreement of the Paris Fire Brigade.</li>
   <li>The data provided as part of the challenge is intended for use only in this context. Any other use without the explicit agreement of the Paris Fire Brigade is forbidden.</li>
@@ -205,8 +205,7 @@ The dataset covers the entire year 2018 for which inoperable data have been sque
 <h3>Starting script</h3>
 The following script is aimed to be a starting point for the participants.
 
-<pre class="language-python"><code class="language-python">
-import pandas as pd
+<pre class="language-python"><code class="language-python">import pandas as pd
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
@@ -249,3 +248,4 @@ submission.to_csv('./submission.csv', sep=",")
 # r2_score(observed_values,predited_values)
 #############################
 </code></pre>
+<br>
