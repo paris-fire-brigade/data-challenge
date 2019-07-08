@@ -5,6 +5,7 @@ title: "03 - Utilisation d'un service web de recherche d'itinéraire"
 categories: [post]
 author: "Benjamin Berhault"
 lang: fr
+published: false
 ---
 
 <div class="row">
@@ -113,5 +114,6 @@ Vous pouvez vérifier la réponse obtenue avec la [Google Interactive Polyline E
 
 <div class="card-panel teal lighten-4">Si vous ressentez le besoin de visualiser très rapidement des coordonées sur une carte vous pouvez utiliser : <a href="https://www.darrinward.com/lat-long/">https://www.darrinward.com/lat-long/</a></div>
 
-[04 - Jupyter et les commandes magiques <i class="material-icons" style="vertical-align:middle">fast_forward</i>]({{ site.baseurl }}{% post_url 2018-12-11-04-jupyter-et-les-commandes-magiques %})
+[03 - Utilisation d'un service web de recherche d'itinéraire <i class="material-icons" style="vertical-align:middle">fast_forward</i>]({{ site.baseurl }}{% post_url 2018-12-11-03-utilisation-d-un-service-web-de-recherche-d-itinéraire %})
 {: .align-right}
+

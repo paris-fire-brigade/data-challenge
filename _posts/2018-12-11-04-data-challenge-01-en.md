@@ -105,7 +105,7 @@ A emergency vehicle transmits various radio statutes during an intervention for 
 
 <h3>External sources of potentially relevant data</h3>
 <ul>
-  <li><a href="https://download.geofabrik.de/europe/france/ile-de-france.html">OpenStreetMap data of the region Ile-de-France</a> (nevertheless the <a href="{{ site.baseurl }}{% post_url 2018-12-11-03-utilisation-d-un-service-web-de-recherche-d-itinéraire %}">API</a> available can also provide you with a lot of relevant information for your analysis)</li>
+  <li><a href="https://download.geofabrik.de/europe/france/ile-de-france.html">OpenStreetMap data of the region Ile-de-France</a> (nevertheless the <a href="{{ site.baseurl }}{% post_url 2019-06-13-06-set-up-an-osrm-server-on-ubuntu %}">API</a> available can also provide you with a lot of relevant information for your analysis)</li>
   <li>Atmospheric parameters measured or observed (data source: <a href="https://donneespubliques.meteofrance.fr/?fond=produit&id_produit=90&id_rubrique=32">https://donneespubliques.meteofrance.fr</a>)
     <ul>
       <li><a href="{{ '/data/meteo_synop.201609.csv.gz' | relative_url }}">Data from September 2016</a></li>

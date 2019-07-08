@@ -33,12 +33,11 @@ lang: en
 	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#tile-service">Tile service</a> - This service generates Mapbox Vector Tiles that can be viewed with a vector-tile capable slippy-map viewer.</li>
 </ul>
 
-You will need at least 2.5GB of RAM (in my case with 1GB of RAM OSRM build failed).
+You will need at least 2.5GB of RAM (in my case with 1GB OSRM build failed).
 
 Upgrade all the packages
 ```console
 sudo apt-get update
-sudo apt-get upgrade
 ```
 
 Install dependencies
@@ -118,16 +117,100 @@ osrm-routed ile-de-france-latest.osrm
 
 Leave/detach the `tmux` session by typing `Ctrl`+`b` and then `d`
 
-You have now a high performance routing engine up and running and with your server ip address you can test it:
+You have now a high performance routing engine up and running.
 
-* Route service: [http://your_server_ip:5000/route/v1/driving/2.25975,48.923557;2.262194,48.922554](http://your_server_ip:5000/route/v1/driving/2.25975,48.923557;2.262194,48.922554)
+### Retrieving the route of a vehicle corresponding to a sequence of GPS tracks
 
+You can now request the service to get the fastest route between 2 GPS coordinates.
 
-You can check your response with the [Google Interactive Polyline Encoder Utility](https://developers.google.com/maps/documentation/utilities/polylineutility). For that copy the obtained geometry paremeter in the <b>Encoded Polyline</b> field and run <b>Decode polyline</b>. In my case it plot the exact polyline I was looking for:
+Let's take an example with the following sequence of geolocations (longitude, latitude, longitude, latitude, ...):</i> :
+
+```console
+2.25975,48.923557;2.262194,48.922554
+```
+
+To use the service with Python, you can use the following code:
+
+```python
+import json
+import requests
+from pprint import pprint
+
+url = 'http://0.0.0.0:5000/route/v1/car/'
+url += '2.25975,48.923557;2.262194,48.922554'
+
+response = requests.get(url)
+json_data = json.loads(response.text)
+```
+
+The `pprint` module (for pretty print) allows the display of self-indented python data structures.
+
+```python
+pprint(json_data)
+```
+```console
+{
+   "code":"Ok",
+   "routes":[
+      {
+         "geometry":"gkriHmjxLpCkBBcILcBHB",
+         "legs":[
+            {
+               "steps":[
+
+               ],
+               "distance":251.2,
+               "duration":34,
+               "summary":"",
+               "weight":34
+            }
+         ],
+         "distance":251.2,
+         "duration":34,
+         "weight_name":"routability",
+         "weight":34
+      }
+   ],
+   "waypoints":[
+      {
+         "hint":"rUAAgDMXC4AHAAAABQAAAAAAAAAmAAAAHvuhQA7XVUAAAAAAYpXVQQcAAAAFAAAAAAAAACYAAAA4BQAAInsiAKSD6gImeyIApYPqAgAArwmOS6TT",
+         "distance":0.313522,
+         "name":"Rue Victor Hugo",
+         "location":[
+            2.259746,
+            48.923556
+         ]
+      },
+      {
+         "hint":"rBoNgK0aDYANAAAAAAAAAAAAAAAAAAAACWqrQAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAAAAAA4BQAAeYUiAESA6gKyhCIAun_qAgAADwyOS6TT",
+         "distance":21.170758,
+         "name":"",
+         "location":[
+            2.262393,
+            48.922692
+         ]
+      }
+   ]
+}
+```
+To retrieve the geometry:
+
+```python
+json_data["routes"][0]["geometry"]
+```
+Geometry returned:
+```console
+gkriHmjxLpCkBBcILcBHB
+```
+
+You can check this geometry with the [Google Interactive Polyline Encoder Utility](https://developers.google.com/maps/documentation/utilities/polylineutility). 
+Copy/Paste the geometry into the <b>Encoded Polyline</b> and click on <b>Decode polyline</b>. In my case, I get the folowing polyline:
 
 <center>
-	<img src="{{ '/images/08-OSRM/02-OSRM.png' | relative_url }}" class="responsive-img">
+  <img src="{{ '/images/08-OSRM/02-OSRM.png' | relative_url }}" class="responsive-img">
 </center>
+
+<div class="card-panel teal lighten-4">If you feel the need to quickly visualize coordinates on a map you can use:  <a href="https://mapmakerapp.com/">https://mapmakerapp.com/</a></div>
 
 
 {% comment %}

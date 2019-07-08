@@ -125,6 +125,5 @@ OSMnx allows you to retrieve, build, analyze and visualize street networks from 
 
 <center><img src="{{ '/images/01-libraries/06-libraries.png' | relative_url }}" class="responsive-img"></center>
 
-[03 - Use of a route search web service <i class="material-icons" style="vertical-align:middle">fast_forward</i>]({{ site.baseurl }}{% post_url 2018-12-11-03-use-of-a-route-search-web-service %})
+[04 - Jupyter and magic commands <i class="material-icons" style="vertical-align:middle">fast_forward</i>]({{ site.baseurl }}{% post_url 2018-12-11-04-jupyter-and-magic-commands %})
 {: .align-right}
-
