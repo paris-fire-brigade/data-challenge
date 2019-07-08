@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "01 - Installation of the work environment"
+title: "01 - Python installation"
 categories: [post]
 author: "Benjamin Berhault"
 lang: en
