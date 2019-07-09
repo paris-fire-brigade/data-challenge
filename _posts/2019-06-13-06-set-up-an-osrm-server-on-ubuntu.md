@@ -119,17 +119,15 @@ Leave/detach the `tmux` session by typing `Ctrl`+`b` and then `d`
 
 You have now a high performance routing engine up and running.
 
-### Retrieving the route of a vehicle corresponding to a sequence of GPS tracks
+### Get the estimated fastest route for a departure-destination pair of GPS points
 
-You can now request the service to get the fastest route between 2 GPS coordinates.
-
-Let's take an example with the following sequence of geolocations (longitude, latitude, longitude, latitude, ...):</i> :
+Let's take for example the following GPS points (departure's longitude, departure's latitude, departure's longitude, departure's latitude) :
 
 ```console
 2.25975,48.923557;2.262194,48.922554
 ```
 
-To use the service with Python, you can use the following code:
+To use the service with Python, you can do:
 
 ```python
 import json
@@ -143,7 +141,7 @@ response = requests.get(url)
 json_data = json.loads(response.text)
 ```
 
-The `pprint` module (for pretty print) allows the display of self-indented python data structures.
+The response of the service should looks like:
 
 ```python
 pprint(json_data)
@@ -198,13 +196,13 @@ To retrieve the geometry:
 ```python
 json_data["routes"][0]["geometry"]
 ```
-Geometry returned:
+For our example you will get:
 ```console
 gkriHmjxLpCkBBcILcBHB
 ```
 
 You can check this geometry with the [Google Interactive Polyline Encoder Utility](https://developers.google.com/maps/documentation/utilities/polylineutility). 
-Copy/Paste the geometry into the <b>Encoded Polyline</b> and click on <b>Decode polyline</b>. In my case, I get the folowing polyline:
+Copy/Paste the geometry into the <b>Encoded Polyline</b> field and click on <b>Decode polyline</b>. In my case, I get the folowing polyline:
 
 <center>
   <img src="{{ '/images/08-OSRM/02-OSRM.png' | relative_url }}" class="responsive-img">
