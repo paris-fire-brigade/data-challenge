@@ -141,7 +141,7 @@ response = requests.get(url)
 json_data = json.loads(response.text)
 ```
 
-The response of the service should looks like:
+The service response should looks like:
 
 ```python
 pprint(json_data)
