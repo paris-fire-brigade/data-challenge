@@ -37,7 +37,6 @@ A non-optimal choice of an emergency vehicle for a rescue request may lengthen t
   </div>
 </div>
 
-
 <big><b>Page content</b></big>
   <ul>
     <li>Challenge</li>
@@ -75,8 +74,9 @@ This measurement is composed by the 2 following periods of time:
 
 <big><b>Resources to consult for this challenge</b></big>
 <ul>
-  <li><a href="https://medium.com/crim/predicting-the-response-times-of-firefighters-using-data-science-da79f6965f93">Using Data Science to Predict Response Times of Firefighters</a> 
-  <li><a href="https://eng.uber.com/engineering-an-efficient-route/">How Uber Engineers an Efficient Route</a>
+  <li><a href="https://medium.com/crim/predicting-the-response-times-of-firefighters-using-data-science-da79f6965f93">Using Data Science to Predict Response Times of Firefighters</a> </li>
+  <li><a href="https://eng.uber.com/engineering-an-efficient-route/">How Uber Engineers an Efficient Route</a></li>
+  <li><a href="https://www.kaggle.com/c/nyc-taxi-trip-duration/notebooks">Kaggle Challenge: New York City Taxi Trip Duration</a><img src="{{ '/images/new.png' | relative_url }}" class="responsive-img"></li>
 </ul>
 
 <h3>Dataset description</h3>
@@ -98,6 +98,12 @@ The dataset covers the entire year 2018 for which inoperable data have been sque
 <ul/>
   <li>x_test.csv</li>
   <li>y_test.csv</li>
+</ul>
+<big><b>Supplementary files<img src="{{ '/images/new.png' | relative_url }}" class="responsive-img">:</b></big><br>
+Following the request of one of the challengers and facilitate the exploitation of GPS tracks for 30% of the dataset filled with this information, 2 "supplementary files" have been made available under the "Files" section of the ENS data challenge page.
+<ul/>
+  <li>1 for the training dataset (219337 lines): x_train_additional_file.csv</li>
+  <li>1 for the testing dataset (108033 lines): x_test_additional_file.csv</li>
 </ul>
 <br>
 <big><b>Input parameters (x_train.csv and x_test.csv):</b></big>
@@ -193,6 +199,15 @@ The dataset covers the entire year 2018 for which inoperable data have been sque
   <li> <b>[TO PREDICT]</b> <code>delta selection-presentation</code> (int): elapsed time in seconds between the selection of the emergency vehicle and its presentation on the intervention scene (delta selection-departure + delta departure-presentation)</li>
 </ul>
 
+<big><b>Supplementary files (x_train_additional_file.csv and x_test_additional_file.csv)<img src="{{ '/images/new.png' | relative_url }}" class="responsive-img">:</b></big>
+<ul>
+  <li> <b>[ID]</b> <code>emergency vehicle selection</code>: identifier of a selection instance of an emergency vehicle for an intervention</li>
+  <li> <code>OSRM estimate from last observed GPS position</code> (json object): service route response from last observed GPS position of an OSRM instance (<a href="http://project-osrm.org/docs/v5.15.2/api/#route-service">http://project-osrm.org/docs/v5.15.2/api/#route-service</a>) setup with the Ile-de-France OpenStreetMap data</li>
+  <li> <code>OSRM estimated distance from last observed GPS position</code> (float): distance (in meters) calculated by the OSRM route service from last observed GPS position</li>
+  <li> <code>OSRM estimated duration from last observed GPS position</code> (float): transit delay (in seconds) calculated by the OSRM route service from last observed GPS position</li>
+  <li> <code>time elapsed between selection and last observed GPS position</code> (float): in seconds</li>
+  <li> <code>updated OSRM estimated duration</code> (float): time elapsed (in seconds) between selection and last observed GPS position + OSRM estimated duration from last observed GPS position</li>
+</ul>
 
 <h3>External data sources potentially relevant</h3>
 <ul>
