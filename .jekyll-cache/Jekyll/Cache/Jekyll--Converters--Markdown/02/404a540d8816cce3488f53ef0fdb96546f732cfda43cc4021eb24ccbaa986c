@@ -1,0 +1,11 @@
+I"8<div class="row">
+  <div class="col grid s12 m6 l3" height="">
+    <img src="/data-challenge/images/db_python.png" class="responsive-img" style="padding-top: 20px" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    For those comfortable with SQL, it may be relevant to first import the dataset into a database to conduct a first phase of exploratory data analysis and manipulation.<br />
+    	<br />
+    Once this first phase is done, Python will be used in a second phase to continue the analysis and data exploitation and data rendering activities.
+  </div>
+</div>
+:ET

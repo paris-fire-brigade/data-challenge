@@ -1,0 +1,120 @@
+I"Š<div class="row">
+  <div class="col grid s12 m6 l3">
+    <img src="/data-challenge/images/libraries.jpg" class="responsive-img" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    <ul>
+      <li>Ipyleaflet</li>
+      <li>Major Python libraries for data visualization
+        <ul>
+          <li>Matplotlib</li>
+          <li>Seaborn</li>
+          <li>Bokeh</li>
+        </ul>
+      </li>
+      <li>OSMnx - Road Network Analysis</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="ipyleaflet">Ipyleaflet</h2>
+<p><b>ipyleaflet</b> is a library facilitating the creation of interactive maps, the insertion and manipulation of objects and geometric shapes.</p>
+
+<div class="row">
+  <div class="col grid s12 m4 l3">
+    <ul>
+      <li><a href="https://ipyleaflet.readthedocs.io/en/latest/">Documentation</a></li>
+      <li><a href="https://github.com/jupyter-widgets/ipyleaflet">GitHub repo</a></li>
+    </ul>
+  </div>
+  <div class="col grid s12 m8 l9">
+    Installation
+    <pre class="language-console"><code class="language-console">conda install -c conda-forge ipyleaflet</code></pre>
+  </div>
+</div>
+
+<p>Example</p>
+<center><img src="/data-challenge/images/01-libraries/05-libraries.png" class="responsive-img" /></center>
+<p><br /></p>
+
+<h2 id="major-python-libraries-for-data-visualization">Major Python libraries for data visualization</h2>
+
+<h3 id="matplotlib">Matplotlib</h3>
+<p>Matplotlib is probably the most used Python package for 2-dimensional data representation.</p>
+
+<div class="row">
+  <div class="col grid s12 m4 l3">
+    <ul>
+      <li><a href="https://matplotlib.org/tutorials/index.html">Tutorials</a></li>
+      <li><a href="https://matplotlib.org/gallery/index.html">Gallery</a></li>
+    </ul>
+  </div>
+  <div class="col grid s12 m8 l9">
+    Installation
+    <pre class="language-console"><code class="language-console">conda install -c conda-forge matplotlib</code></pre>
+  </div>
+</div>
+
+<p>Example</p>
+<center><img src="/data-challenge/images/01-libraries/02-libraries.png" class="responsive-img" /></center>
+
+<h3 id="seaborn">Seaborn</h3>
+<p>Seaborn is a data visualization library based on matplotlib.</p>
+
+<div class="row">
+  <div class="col grid s12 m4 l3">
+    <ul>
+      <li><a href="https://seaborn.pydata.org/tutorial.html">Tutoriels</a></li>
+      <li><a href="https://seaborn.pydata.org/examples/index.html">Galerie</a></li>
+    </ul>
+  </div>
+  <div class="col grid s12 m8 l9">
+    Installation
+    <pre class="language-console"><code class="language-console">conda install -c conda-forge seaborn</code></pre>
+  </div>
+</div>
+
+<p>Example</p>
+<center><img src="/data-challenge/images/01-libraries/03-libraries.png" class="responsive-img" /></center>
+
+<h3 id="bokeh">Bokeh</h3>
+<p>Bokeh enables the creation of interactive visual representations of data by exploiting the latest innovations enjoyed by web browsers.</p>
+
+<div class="row">
+  <div class="col grid s12 m4 l3">
+    <ul>
+      <li><a href="https://hub.mybinder.org/user/bokeh-bokeh-notebooks-su7mtuxo/notebooks/tutorial/00%20-%20Introduction%20and%20Setup.ipynb">Tutoriels</a></li>
+      <li><a href="https://bokeh.pydata.org/en/latest/docs/gallery.html">Galerie</a></li>
+    </ul>
+  </div>
+  <div class="col grid s12 m8 l9">
+    Installation
+    <pre class="language-console"><code class="language-console">conda install -c conda-forge bokeh</code></pre>
+  </div>
+</div>
+<p><br /></p>
+
+<p>Example</p>
+<center><img src="/data-challenge/images/01-libraries/04-libraries.png" class="responsive-img" /></center>
+
+<h2 id="osmnx---road-network-analysis-potentially-interesting">OSMnx - Road Network Analysis (potentially interesting)</h2>
+
+<p>OSMnx allows you to retrieve, build, analyze and visualize street networks from OpenStreetMap data.</p>
+
+<div class="row">
+  <div class="col grid s12 m4 l3">
+    <ul>
+      <li><a href="https://github.com/gboeing/osmnx">Repo GitHub</a></li>
+      <li><a href="https://github.com/gboeing/osmnx/tree/master/examples">Examples</a></li>
+    </ul>
+  </div>
+  <div class="col grid s12 m8 l9">
+    Installation
+    <pre class="language-console"><code class="language-console">conda install -c conda-forge osmnx</code></pre>
+  </div>
+</div>
+
+<center><img src="/data-challenge/images/01-libraries/06-libraries.png" class="responsive-img" /></center>
+
+<p class="align-right"><a href="/data-challenge/data-challenge/post/2018/12/11/04-jupyter-and-magic-commands.html">04 - Jupyter and magic commands <i class="material-icons" style="vertical-align:middle">fast_forward</i></a></p>
+:ET

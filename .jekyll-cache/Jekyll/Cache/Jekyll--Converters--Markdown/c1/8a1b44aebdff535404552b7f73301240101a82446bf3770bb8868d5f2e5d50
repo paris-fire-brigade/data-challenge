@@ -1,0 +1,221 @@
+I"�+<div class="row">
+  <div class="col grid s12 m6 l3">
+    <img src="/data-challenge/images/anaconda.png" class="responsive-img" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    The easiest way to install Python and Jupyter Notebook is probably with Anaconda. <br />
+     <br />
+     Anaconda is a free and open source ditribution of Python and R programming languages particularly oriented for applications in data science. One of the major assets of Anaconda is its simplification in the management of packages and their dependencies.
+  </div>
+</div>
+
+<h4 id="contenu-de-la-page">Contenu de la page</h4>
+<ul>
+	<li>Working environment installation on Microsoft Windows
+	<ul>
+		<li>Installing Python with Anaconda</li>
+		<li>Creating a first Jupiter Notebook</li>
+		<li>Installing Python packages
+			<ul>
+				<li>Package installation with conda (preferred)</li>
+				<li>Package installation with pip</li>
+				<li>Manually install a package (as a last resort)</li>
+			</ul>
+		</li>
+		<li>Compose with corporate network constraints
+			<ul>
+				<li>Install a Python package with pip without Internet access</li>
+				<li>Troubleshoot Anaconda proxy issues</li>
+			</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<p>Pour ceux bien décidés à utiliser R en lieu et place de Python : <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/">Documentation Anaconda détaillant l’installation de R pour le Jupyter Notebook</a></p>
+
+<h2 id="working-environment-installation-on-microsoft-windows">Working environment installation on Microsoft Windows</h2>
+
+<h3 id="installing-python-with-anaconda">Installing Python with Anaconda</h3>
+
+<p>Download the version of Anaconda supporting the latest version of <b>Python 3</b>: <a href="https://www.anaconda.com/download/#windows">https://www.anaconda.com/download/#windows</a></p>
+
+<p>Launch and follow the instructions of the installation executable.</p>
+
+<p>Once the installation is complete, launch the anaconda console via <b>Start menu &gt; Anaconda3 &gt; Anaconda Prompt</b>.</p>
+
+<center><img src="/data-challenge/images/03-installation_environnement/01-installation_environnement.jpg" /></center>
+
+<p>Create a Python 3.7 <b>conda environment</b>. (for more information about this consult the <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">documentation on managing environments</a>)</p>
+<pre><code class="language-console">conda create --name py37 python=3.7
+</code></pre>
+
+<div class="card-panel teal lighten-4">A conda environment is a directory containing a specific collection of packages that you have decided to install. Because some packages do not support the latest version of Python, it may be appropriate to maintain an environment for a specific version of Python. <br />
+	<br />
+	<b>The ability to create an environment with Anaconda for a package caused me some problems, so I ended up using the Python 3.7 environment installed by default.</b>
+</div>
+
+<p>To activate your environment within the Anaconda console, enter:</p>
+<pre><code class="language-console">activate py37
+</code></pre>
+
+<p>To leave your environment, simply enter:</p>
+<pre><code class="language-console">deactivate
+</code></pre>
+
+<p>Check your version of Python in this environment:</p>
+<pre><code class="language-console">python --version
+</code></pre>
+<p>If you have a Python 3.7 environment installed, it should be returned to you: <code>Python 3.7.0</code></p>
+
+<p><br /></p>
+
+<h3 id="create-a-first-jupiter-notebook">Create a first Jupiter Notebook</h3>
+
+<div class="row">
+  <div class="col grid s12 m6 l6">
+  	The Jupyter Notebook is an interactive web tool that allows you to create and share your data handling and analysis scripts with your explanations and numerical or visual results. <br />
+  		<br />
+    In the Anaconda console, navigate to the directory of your choice, for example: <br />
+	<pre class="language-console"><code class="language-console">cd ./Documents/Python_notebooks</code></pre>
+	<br />
+	Launch a Jupiter notebook<br />
+	<pre class="language-console"><code class="language-console">Jupyter Notebook</code></pre>
+
+  </div>
+  <div class="col grid s12 m6 l6 ">
+    <center><img src="/data-challenge/images/03-installation_environnement/02-installation_environnement.png" class="responsive-img" /></center>
+  </div>
+</div>
+
+<p>Create a new notebook by clicking <b>New &gt; Python 3</b></p>
+
+<p>In the empty dialog box, enter:</p>
+<pre><code class="language-python">import os
+
+curDir = os.getcwd()
+print(curDir)
+</code></pre>
+
+<p>Run this cell either by pressing <code>Shift</code>+<code>Enter</code> or clicking <b>Run</b></p>
+
+<p>Its execution should return the current location of your notebook, something similar to:</p>
+
+<pre><code class="language-console">C:/Users/xxxxx/Documents/Python_notebooks
+</code></pre>
+<p><br /></p>
+
+<h3 id="installing-python-packages">Installing Python packages</h3>
+<h4 id="package-installation-with-conda-preferred">Package installation with conda (preferred)</h4>
+
+<p>Say you want to install the <b>Jupyter notebook extensions</b> from the following GitHub directory: <a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">https://github.com/ipython-contrib/jupyter_contrib_nbextensions</a></p>
+
+<p>You can do this very simply now that you have Anaconda, with the following command:</p>
+<pre><code class="language-console">conda install -c conda-forge jupyter_contrib_nbextensions
+</code></pre>
+
+<p>The installable packages via <code>conda</code> are listed within <a href="https://anaconda.org/">https://anaconda.org/</a></p>
+
+<p>With this package just installed, you will be able to activate an autocompletion wizard. To do this, access your new configuration page:  <a href="http://localhost:8888/nbextensions?nbextensions=codefolding/main">http://localhost:8888/nbextensions?nbextensions=codefolding/main</a></p>
+
+<p>And activate the <b>Hinterland</b> extension by checking the associated box.</p>
+
+<p>You will now see in your notebook an autocompletion assistant during your keyboard entries.</p>
+
+<h4 id="package-installation-with-pip">Package installation with pip</h4>
+<p>If the package you are looking for is not part of Anaconda-managed packages, or you want to take advantage of the latest version of a package not yet supported by Anaconda, you can always try to find it on the Python Package Index Aka PyPi: <a href="https://pypi.org/">https://pypi.org/</a></p>
+
+<p>Package installation with <code>pip</code> takes the following form</p>
+<pre><code class="language-console">pip install nom_du_package
+</code></pre>
+
+<p>You will potentially encounter error messages that indicate missing prerequisite packages. Yes … Anaconda takes care of everything, with  <code>pip</code> it’s up to you to do the job.</p>
+
+<h4 id="manually-install-a-package-as-a-last-resort">Manually install a package (as a last resort)</h4>
+
+<p>As a last resort, if you need a package not available <code>conda</code> or <code>pip</code>, you can still install it manually.</p>
+
+<ul>
+  <li>Download the package source files</li>
+  <li>Unzip them if necessary</li>
+  <li>If there are any installation instructions (usually found within INSTALL.md or READ.md) read them and follow them OTHERWISE</li>
+  <li>Navigate through the Anaconda console in its directory containing the <code>setup.py</code> file</li>
+  <li>And just type and run
+    <pre><code class="language-console">python setup.py install
+</code></pre>
+    <p><br /></p>
+  </li>
+</ul>
+
+<h3 id="compose-with-corporate-network-constraints">Compose with corporate network constraints</h3>
+
+<p>Say you want to install the <code>seaborn</code> package.</p>
+
+<h4 id="troubleshoot-anaconda-proxy-issues">Troubleshoot Anaconda proxy issues</h4>
+<p>When trying to install a Python package via the command-line tool <code>conda</code>, you might find yourself stuck with the following message</p>
+
+<pre><code class="language-console">conda install -c conda-forge seaborn
+Fetching package metadata:
+</code></pre>
+
+<p>To resolve this problem, contact your network administrator and request details about the enterprise proxy.</p>
+
+<p>With this information you will edit a <code>.condarc</code> configuration file within your user folder (<code>C:\Users\votre_repertoire_utilisateur</code>).</p>
+
+<div class="card-panel teal lighten-4">
+	<a href="https://conda.io/docs/user-guide/configuration/use-condarc.html">&#91;conda.io&#93;</a> The <code>.condarc</code>, configuration file is an optional configuration file that allows advanced users to configure different aspects of conda, such as package discovery channels, proxy configuration, and environment directories.<br />
+	<br />
+	The <code>.condarc</code> file <b><u>is not</u></b> included by default in the Anaconda installation, but it is automatically created within your <b>home directory</b> (<code>C:\Users\Username</code>) the first time you run the command: <code>conda config</code><br />
+</div>
+
+<p>At your command prompt, create the <code>.condarc</code> file by running the command</p>
+<pre><code class="language-console">conda config
+</code></pre>
+
+<p>Edit your <code>.condarc</code> file with the information provided by the network administrator.</p>
+
+<ul>
+  <li>with identification information:</li>
+</ul>
+
+<pre><code class="language-console">proxy_servers:
+  http: http://user:pass@corp.com:8080
+  https: https://user:pass@corp.com:8080
+
+ssl_verify: False
+</code></pre>
+
+<ul>
+  <li>without identification information:</li>
+</ul>
+
+<pre><code class="language-console">proxy_servers:
+  http: http://corp.com:8080
+  https: https://corp.com:8080
+
+ssl_verify: False
+</code></pre>
+
+<h4 id="install-a-python-package-with-pip-without-internet-access">Install a Python package with pip without Internet access</h4>
+
+<p>From a machine where you have access to the Internet, download from <a href="https://pypi.org">https://pypi.org</a> or any other relevant source the .whl file of the package you want to install.</p>
+
+<p>The .whl file for seaborn can be downloaded from <a href="https://pypi.org/project/seaborn/#files">https://pypi.org/project/seaborn/#files</a></p>
+
+<p>Transfer this .whl file to the machine where it is to be installed, the one that does not have Internet access or restricted access, and run the following command (replacing the name of the .whl file with the one you just get):</p>
+
+<pre><code class="language-console">pip install seaborn-0.9.0-py3-none-any.whl
+</code></pre>
+
+<p>You will probably face some warnings in red with messages of the form:</p>
+
+<pre><code class="language-console">xxxxxx xx.x.x requires xxxxxx&gt;=xx.x.x, which is not installed.
+</code></pre>
+
+<p>This message indicates that you must first follow this process for each missing Python package before you can install the package that you originally wanted.</p>
+
+<p>An alternative to using a .whl file is installing manually the previously processed package.</p>
+
+<p class="align-right"><a href="/data-challenge/data-challenge/post/2018/12/11/02-some-python-libraries-to-consider.html">02 - Bibliothèques Python à privilégier <i class="material-icons" style="vertical-align:middle">fast_forward</i></a></p>
+
+:ET

@@ -1,0 +1,187 @@
+I"y!<div class="row">
+  <div class="col grid s12 m6 l3">
+    <img src="/data-challenge/images/osrm.png" class="responsive-img" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    The Open Source Routing Machine or OSRM is a C++ implementation of a <b>high-performance routing engine</b> for shortest paths in road networks. Licensed under the permissive 2-clause BSD license, OSRM is a free network service hosting the following services: <a href="http://project-osrm.org/docs/v5.5.1/api/#nearest-service">nearest</a>, <a href="http://project-osrm.org/docs/v5.5.1/api/#tile-service">route</a>, <a href="http://project-osrm.org/docs/v5.5.1/api/#table-service">table</a>, <a href="http://project-osrm.org/docs/v5.5.1/api/#match-service">match</a>, <a href="http://project-osrm.org/docs/v5.5.1/api/#trip-service">trip</a>, <a href="http://project-osrm.org/docs/v5.5.1/api/#tile-service">tile</a>.<br />
+    <br />
+    We will see in this post how to deploy your own OSRM service in case you want to use it on your own data or just to not be limited by the number requests with responses like: <code>{'message': 'Too Many Requests'}</code>.
+  </div>
+</div>
+
+<p><b>Sources:</b></p>
+<ul>
+  <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-osrm-server-on-ubuntu-14-04">https://www.digitalocean.com/community/tutorials/how-to-set-up-an-osrm-server-on-ubuntu-14-04</a></li>
+  <li><a href="https://github.com/Project-OSRM/osrm-backend/wiki/Running-OSRM">https://github.com/Project-OSRM/osrm-backend/wiki/Running-OSRM</a></li>
+  <li><a href="http://project-osrm.org/docs/v5.5.1/api/">http://project-osrm.org/docs/v5.5.1/api/</a></li>
+</ul>
+
+<p><b>OSRM features</b></p>
+<ul>
+	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#nearest-service">Nearest service</a> - Snaps a coordinate to the street network and returns the nearest n matches.</li>
+	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#tile-service">Route service</a> - Finds the fastest route between coordinates in the supplied order.</li>
+	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#table-service">Table service</a> - Computes the duration of the fastest route between all pairs of supplied coordinates.</li>
+	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#match-service">Match service</a> - Map matching matches/snaps given GPS points to the road network in the most plausible way.</li>
+	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#trip-service">Trip service</a> - The trip plugin solves the Traveling Salesman Problem using a greedy heuristic (farthest-insertion algorithm). The returned path does not have to be the fastest path, as TSP is NP-hard it is only an approximation. </li>
+	<li><a href="http://project-osrm.org/docs/v5.5.1/api/#tile-service">Tile service</a> - This service generates Mapbox Vector Tiles that can be viewed with a vector-tile capable slippy-map viewer.</li>
+</ul>
+
+<p>You will need at least 2.5GB of RAM (in my case with 1GB OSRM build failed).</p>
+
+<p>Upgrade all the packages</p>
+<pre><code class="language-console">sudo apt-get update
+</code></pre>
+
+<p>Install dependencies</p>
+<pre><code class="language-console">sudo apt-get install build-essential git cmake pkg-config \
+libbz2-dev libxml2-dev libzip-dev libboost-all-dev \
+lua5.2 liblua5.2-dev libtbb-dev
+</code></pre>
+
+<p>Create a dedicated directory and move into to keep everything tidy and clean</p>
+<pre><code class="language-console">mkdir osrm
+cd osrm
+</code></pre>
+
+<p>Get OSRM from the official GitHub repo</p>
+<pre><code class="language-console">git clone https://github.com/Project-OSRM/osrm-backend.git
+</code></pre>
+
+<p>Compile and install OSRM binaries</p>
+<pre><code class="language-console">cd osrm-backend
+mkdir -p build
+cd build
+cmake ..
+cmake --build .
+sudo cmake --build . --target install
+</code></pre>
+
+<p>The map pre-processing is quite memory intensive. For this reason, OSRM uses a library called STXXL to map its internal operations on the hard disk. STXXL relies on a configuration file called .stxxl, which lives in the same directory where you are running your software, to determine how much space is dedicated to the STXXL data structures.</p>
+
+<p>Configure STXXL with an <code>.stxxl</code> file in your <code>osrm</code> folder.</p>
+<pre><code class="language-console">cd ~/osrm
+vi .stxxl
+</code></pre>
+
+<p>Write in it</p>
+<pre><code class="language-console">disk=/tmp/stxxl,10G,syscall
+</code></pre>
+
+<p>Save and close it.</p>
+
+<p>Because the speed profile script might depend on some Lua functions defined in the profiles library, we also create a symbolic link to it in the same directory by running the following two commands.</p>
+<pre><code class="language-console">ln -s osrm-backend/profiles/car.lua profile.lua
+ln -s osrm-backend/profiles/lib
+</code></pre>
+
+<p>Get openstreetmap data</p>
+<pre><code class="language-console">wget https://download.geofabrik.de/europe/france/ile-de-france-latest.osm.bz2
+bzip2 -d ile-de-france-latest.osm.bz2
+</code></pre>
+
+<p>Pre-process the <code>.osm</code> file with the car profile</p>
+<pre><code class="language-console">osrm-extract ile-de-france-latest.osm -p ./osrm-backend/profiles/car.lua
+</code></pre>
+
+<p>Build the contraction hierarchy</p>
+<pre><code class="language-console">osrm-contract ile-de-france-latest.osrm
+</code></pre>
+
+<p>To keep the osrm-routed process running after ending ssh session, use tmux</p>
+<pre><code class="language-console">tmux
+</code></pre>
+
+<p>Start a routing engine HTTP server on port 5000 inside the tmux session</p>
+<pre><code class="language-console">osrm-routed ile-de-france-latest.osrm
+</code></pre>
+
+<p>Leave/detach the <code>tmux</code> session by typing <code>Ctrl</code>+<code>b</code> and then <code>d</code></p>
+
+<p>You have now a high performance routing engine up and running.</p>
+
+<h3 id="get-the-estimated-fastest-route-for-a-departure-destination-pair-of-gps-points">Get the estimated fastest route for a departure-destination pair of GPS points</h3>
+
+<p>Let’s take for example the following GPS points (departure’s longitude, departure’s latitude, departure’s longitude, departure’s latitude) :</p>
+
+<pre><code class="language-console">2.25975,48.923557;2.262194,48.922554
+</code></pre>
+
+<p>To use the service with Python, you can do:</p>
+
+<pre><code class="language-python">import json
+import requests
+from pprint import pprint
+
+url = 'http://0.0.0.0:5000/route/v1/car/'
+url += '2.25975,48.923557;2.262194,48.922554'
+
+response = requests.get(url)
+json_data = json.loads(response.text)
+</code></pre>
+
+<p>The service response should looks like:</p>
+
+<pre><code class="language-python">pprint(json_data)
+</code></pre>
+<pre><code class="language-console">{
+   "code":"Ok",
+   "routes":[
+      {
+         "geometry":"gkriHmjxLpCkBBcILcBHB",
+         "legs":[
+            {
+               "steps":[
+
+               ],
+               "distance":251.2,
+               "duration":34,
+               "summary":"",
+               "weight":34
+            }
+         ],
+         "distance":251.2,
+         "duration":34,
+         "weight_name":"routability",
+         "weight":34
+      }
+   ],
+   "waypoints":[
+      {
+         "hint":"rUAAgDMXC4AHAAAABQAAAAAAAAAmAAAAHvuhQA7XVUAAAAAAYpXVQQcAAAAFAAAAAAAAACYAAAA4BQAAInsiAKSD6gImeyIApYPqAgAArwmOS6TT",
+         "distance":0.313522,
+         "name":"Rue Victor Hugo",
+         "location":[
+            2.259746,
+            48.923556
+         ]
+      },
+      {
+         "hint":"rBoNgK0aDYANAAAAAAAAAAAAAAAAAAAACWqrQAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAAAAAA4BQAAeYUiAESA6gKyhCIAun_qAgAADwyOS6TT",
+         "distance":21.170758,
+         "name":"",
+         "location":[
+            2.262393,
+            48.922692
+         ]
+      }
+   ]
+}
+</code></pre>
+<p>To retrieve the geometry:</p>
+
+<pre><code class="language-python">json_data["routes"][0]["geometry"]
+</code></pre>
+<p>For our example you will get:</p>
+<pre><code class="language-console">gkriHmjxLpCkBBcILcBHB
+</code></pre>
+
+<p>You can check this geometry with the <a href="https://developers.google.com/maps/documentation/utilities/polylineutility">Google Interactive Polyline Encoder Utility</a>. 
+Copy/Paste the geometry into the <b>Encoded Polyline</b> field and click on <b>Decode polyline</b>. In my case, I get the folowing polyline:</p>
+
+<center>
+  <img src="/data-challenge/images/08-OSRM/02-OSRM.png" class="responsive-img" />
+</center>
+
+<div class="card-panel teal lighten-4">If you feel the need to quickly visualize coordinates on a map you can use:  <a href="https://mapmakerapp.com/">https://mapmakerapp.com/</a></div>
+
+:ET

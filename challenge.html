@@ -72,11 +72,19 @@ This measurement is composed by the 2 following periods of time:
   <li>the transit time of the rescue team</li>
 </ul>
 
+<big><b><font color="blue">A first solution published!</font><img src="{{ '/images/new.png' | relative_url }}" class="responsive-img"></b></big><br>
+A first solution from a challenger has been published on GitHub: <a href="https://github.com/ds4es/unit-response-oracle">https://github.com/ds4es/unit-response-oracle</a><br>
+It was not possible for us to wait any longer for the publication of this fabulous work.<br>
+We will as soon as possible enhance it with the contributions of other challengers who also agreed to share their work with us. Thanks to all of them very much for the work carried out and shared.<br>
+<br>
+What is extraordinary with this type of challenge is that the multitude of minds leads to the design of a multitude of methods which when combined lead us to a amazing solution that woud have not been possible to reach with the involvement of only one mind.<br>
+<br>
+
 <big><b>Resources to consult for this challenge</b></big>
 <ul>
   <li><a href="https://medium.com/crim/predicting-the-response-times-of-firefighters-using-data-science-da79f6965f93">Using Data Science to Predict Response Times of Firefighters</a> </li>
   <li><a href="https://eng.uber.com/engineering-an-efficient-route/">How Uber Engineers an Efficient Route</a></li>
-  <li><a href="https://www.kaggle.com/c/nyc-taxi-trip-duration/notebooks">Kaggle Challenge: New York City Taxi Trip Duration</a><img src="{{ '/images/new.png' | relative_url }}" class="responsive-img"></li>
+  <li><a href="https://www.kaggle.com/c/nyc-taxi-trip-duration/notebooks">Kaggle Challenge: New York City Taxi Trip Duration</a></li>
 </ul>
 
 <h3>Dataset description</h3>
@@ -99,7 +107,7 @@ The dataset covers the entire year 2018 for which inoperable data have been sque
   <li>x_test.csv</li>
   <li>y_test.csv</li>
 </ul>
-<big><b>Supplementary files<img src="{{ '/images/new.png' | relative_url }}" class="responsive-img">:</b></big><br>
+<big><b>Supplementary files:</b></big><br>
 Following the request of one of the challengers and facilitate the exploitation of GPS tracks for 30% of the dataset filled with this information, 2 "supplementary files" have been made available under the "Files" section of the ENS data challenge page.
 <ul/>
   <li>1 for the training dataset (219337 lines): x_train_additional_file.csv</li>
@@ -199,7 +207,7 @@ Following the request of one of the challengers and facilitate the exploitation 
   <li> <b>[TO PREDICT]</b> <code>delta selection-presentation</code> (int): elapsed time in seconds between the selection of the emergency vehicle and its presentation on the intervention scene (delta selection-departure + delta departure-presentation)</li>
 </ul>
 
-<big><b>Supplementary files (x_train_additional_file.csv and x_test_additional_file.csv)<img src="{{ '/images/new.png' | relative_url }}" class="responsive-img">:</b></big>
+<big><b>Supplementary files (x_train_additional_file.csv and x_test_additional_file.csv):</b></big>
 <ul>
   <li> <b>[ID]</b> <code>emergency vehicle selection</code>: identifier of a selection instance of an emergency vehicle for an intervention</li>
   <li> <code>OSRM estimate from last observed GPS position</code> (json object): service route response from last observed GPS position of an OSRM instance (<a href="http://project-osrm.org/docs/v5.15.2/api/#route-service">http://project-osrm.org/docs/v5.15.2/api/#route-service</a>) setup with the Ile-de-France OpenStreetMap data</li>
@@ -221,13 +229,15 @@ Following the request of one of the challengers and facilitate the exploitation 
 The following script is aimed to be a starting point for the participants.
 
 <pre class="language-python"><code class="language-python">import pandas as pd
+import pandas as pd
+import numpy as np
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
 # Data reading
-x_train = pd.read_csv('./x_train.csv', sep=',')
-y_train = pd.read_csv('./y_train.csv', sep=',')
-x_test = pd.read_csv('./x_test.csv', sep=',')
+x_train = pd.read_csv('./data/x_train.csv', sep=',')
+y_train = pd.read_csv('./data/y_train.csv', sep=',')
+x_test = pd.read_csv('./data/x_test.csv', sep=',')
 
 x_train_transit = x_train[['OSRM estimated distance','intervention on public roads','floor']]
 y_train_transit = y_train[['delta departure-presentation']]
@@ -247,7 +257,7 @@ y_selection_presentation_predicted = y_train['delta selection-departure'].median
 # Create a submission file
 submission = pd.concat([pd.DataFrame(x_test[['emergency vehicle selection']].values), \
            pd.DataFrame(np.full((len(x_test), 1), y_train['delta selection-departure'].median())), \
-           pd.DataFrame(model.predict(x_transit_test_poly)), \
+           pd.DataFrame(model.predict(x_test_transit_poly)), \
            pd.DataFrame(y_selection_presentation_predicted)], \
            axis=1)
 

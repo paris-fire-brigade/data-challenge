@@ -1,0 +1,9 @@
+I",<div class="row">
+  <div class="col grid s12 m6 l3">
+    <center><a href="/data-challenge/docs/affiche_data_challenge_bspp.pdf"><img src="/data-challenge/images/affiche_data_challenge_bspp_preview.png" class="responsive-img" title="Download the challenge poster" /></a></center>
+  </div>
+  <div class="col grid s12 m6 l9 "><p>This challenge is organized as part of the <b>recruitment</b>, in early 2019, of 2 to 3 <b>trainees</b> in the Paris fire service seeking to work in <b>in data analysis, data science and / or business intelligence</b>. Any other participant is however welcome.</p>
+      <p>The challenge concerns an operational problem of the rescue service of the Paris Fire Brigade. The anonymised data of the service are made available.</p>
+      <p>Candidates must conduct in a <a href="https://jupyter.org/">Jupyter Notebook</a> the analysis of the dataset and answer the problem even extend it. We will pay close attention to the graphical transcription of data, comments and conclusions. A geographical representation is unavoidable.</p>
+</div></div>
+:ET

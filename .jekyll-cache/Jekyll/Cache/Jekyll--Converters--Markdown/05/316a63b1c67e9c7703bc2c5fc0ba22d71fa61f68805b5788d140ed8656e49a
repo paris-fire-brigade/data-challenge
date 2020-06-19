@@ -1,0 +1,9 @@
+I"c<div class="row">
+  <div class="col grid s12 m6 l3" height="">
+    <img src="/data-challenge/images/magic-wand.jpg" class="responsive-img" style="padding-top: 20px" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    Jupyter dispose d'un système de commandes dites « magiques » offrant un langage de commande minimaliste et extensible.
+  </div>
+</div>
+:ET

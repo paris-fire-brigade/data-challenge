@@ -1,0 +1,28 @@
+I"Q<div class="row">
+  <div class="col grid s12 m6 l3" height="">
+    <img src="/data-challenge/images/magic-wand.jpg" class="responsive-img" style="padding-top: 20px" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    Jupyter dispose d'un système de commandes dites « magiques » offrant un langage de commande minimaliste et extensible.
+  </div>
+</div>
+
+<p><b>Références</b></p>
+<ul>
+  <li><a href="https://ipython.org/ipython-doc/3/interactive/tutorial.html#magic-functions">Jupyter Notebook documentation</a></li>
+  <li><a href="http://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb">The cell magics in IPython</a></li>
+</ul>
+
+<p><b>2 types de fonctions magiques sont à distinguer :</b></p>
+
+<ul>
+  <li><b>Line magics</b> : il s’agit de commandes précédées d’un caractère <code>%</code> et dont les arguments ne s’étendent que jusqu’à la fin de la ligne courante. Par exemple, <code>%matplotlib inline</code> permet l’affichage des figures directement au sein du notebook.</li>
+  <li><b>Cell magics</b> : il s’agit de commandes précédées des caractères <code>%%</code> et prendra en compte les instructions de toute la cellule.</li>
+</ul>
+
+<p><b>Exemple :</b></p>
+
+<center><img src="/data-challenge/images/02-magic/01-magic.png" class="responsive-img" /></center>
+
+<p class="align-right"><a href="/data-challenge/data-challenge/post/2018/12/14/05-exploitation-des-donnees-au-sein-d-une-bdd.html">05 - Exploitation des données à partir d’une base de données <i class="material-icons" style="vertical-align:middle">fast_forward</i></a></p>
+:ET

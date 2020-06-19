@@ -1,0 +1,11 @@
+I"W<div class="row">
+  <div class="col grid s12 m6 l3" height="">
+    <img src="/data-challenge/images/db_python.png" class="responsive-img" style="padding-top: 20px" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    Pour ceux à l'aise en SQL, il peut être pertinent d'importer dans un premier temps le jeu de données au sein d'une base de données pour conduire une première phase d'exploration et de manipulation.<br />
+    	<br />
+    Une fois cette première phase réalisée, Python sera utilisé pour une deuxième phase d'analyse, l'exploitation et le rendu de la donnée.
+  </div>
+</div>
+:ET

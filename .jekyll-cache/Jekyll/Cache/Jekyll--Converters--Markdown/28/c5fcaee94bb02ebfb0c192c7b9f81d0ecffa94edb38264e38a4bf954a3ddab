@@ -1,0 +1,179 @@
+I"� <div class="row">
+  <div class="col grid s12 m6 l3" height="">
+    <img src="/data-challenge/images/db_python.png" class="responsive-img" style="padding-top: 20px" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    For those comfortable with SQL, it may be relevant to first import the dataset into a database to conduct a first phase of exploratory data analysis and manipulation.<br />
+    	<br />
+    Once this first phase is done, Python will be used in a second phase to continue the analysis and data exploitation and data rendering activities.
+  </div>
+</div>
+
+<ul>
+  <li><big>Within a Microsoft Windows environment</big>
+    <ul>
+      <li>I will opt for <a href="https://www.microsoft.com/en-us/sql-server/sql-server-editions-express">SQL Server 2017 Express Edition</a> as a database system</li>
+      <li>and <a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017">SQL Server Management Studio (SSMS)</a> to manage and query it.</li>
+    </ul>
+  </li>
+  <li><big>Within a Linux or Mac OS environment</big>
+    <ul>
+      <li>I will opt for a PostgreSQL database</li>
+      <li>and pgAdmin 4 to manage and query it.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="within-a-microsoft-windows-environment">Within a Microsoft Windows environment</h2>
+
+<h4 id="microsoft-sql-server-and-ssms-installation">Microsoft SQL Server and SSMS installation</h4>
+<p>Download <b><a href="https://www.microsoft.com/en-us/sql-server/sql-server-editions-express">SQL Server 2017 Express Edition</a></b>.</p>
+
+<p>Launch the executable and follow the installation instructions.</p>
+
+<p>Following this installation your computer will need to restart.</p>
+
+<p>Once restarted, in the same language as your SQL Server installation download and install <b><a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017">SQL Server Management Studio</a></b>.</p>
+
+<p>Once installed, open <b>SQL Server Management Studio</b> (<b>Start menu &gt; Microsoft SQL Server Tools 17 &gt; Microsoft SQL Server Management Studio</b>).</p>
+
+<p>An instance of Microsoft SQL Server Express should automatically be detected and offered at login (otherwise <b>Server name &gt; Browse… &gt; Database Engine &gt; DESKTOP-XXXXX</b>).</p>
+
+<p>Click on <b>Connect</b>.</p>
+
+<h4 id="importing-data-into-a-database">Importing data into a database</h4>
+
+<p>Create a new database from the <b>Object Explorer</b> window by right-clicking on the <b>Database</b> folder.</p>
+
+<p>Give him a name. and click <b>OK</b>.</p>
+
+<p><b>Right click</b> on your new database <b>&gt; Tasks &gt; Import data…</b>
+<img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/02-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p>Select for <b>Data Source: Flat File Source</b>.</p>
+
+<p><b>Next</b></p>
+
+<p>As file name, browse through the <b>Parcourir…</b> button the <a href="/data-challenge/data/data.zip">data.csv file</a> (select the CSV file format) previously downloaded and unzipped.</p>
+
+<p><b>Open</b></p>
+
+<p>Make sure the <b>Code Page</b> field is set to <b>65001 (UTF-8)</b>.</p>
+
+<p><img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/03-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p>Via the <b>Avanced</b> tab, modify only the <b>DataType</b> of the Unicode String <b>Statut opérationnel</b> column [DT_WSTR].</p>
+
+<p><img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/04-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p><b>Next</b></p>
+
+<p><b>Destination : SQL Server Native Client 11.0</b></p>
+
+<p><b>Next</b></p>
+
+<p>Click <b>Edit mappings…</b>.</p>
+
+<p>Change the type of the <b>Statut opérationnel</b> to <b>nvarchar</b>.</p>
+
+<p><b>OK</b></p>
+
+<p><b>Next</b></p>
+
+<p><b>Finish</b></p>
+
+<p>In the <b>Object Explorer</b> window, with a right click on the database name <b>&gt; Refresh</b> you should see your table: <b>dbo.data</b>.</p>
+
+<p>Here you can check the data by right clicking on the table name <b>&gt; Select first 1000 rows</b>.
+<img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/05-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p>Our data has been loaded but the types are not optimal.</p>
+
+<p>We will therefore create a new table with the correct data types.</p>
+
+<p>Right-click on your table <b>&gt; Generate Table Script As &gt; CREATE To &gt; New Query Editor Window</b>.</p>
+
+<p>And modify this code in the following way (here a dedicated diagram has been created).</p>
+
+<pre><code class="language-sql">USE [data-challenge]
+GO
+
+/****** Object:  Table [dbo].[data]    Script Date: 15/12/2018 10:25:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE SCHEMA BSPP
+GO
+
+CREATE TABLE [BSPP].[data](
+	[Date] [Datetime] NULL,
+	[Longitude] float NULL,
+	[Latitude] float NULL,
+	[Véhicule de secours] int NULL,
+	[Famille de véhicule de secours] [varchar](50) NULL,
+	[Statut opérationnel] [nvarchar](50) NULL,
+	[Numéro Intervention] int NULL,
+	[Type d'intervention] [varchar](50) NULL,
+	[Disponibilité du moyen de secours] bit NULL,
+	[Centre de secours] int NULL
+) ON [PRIMARY]
+GO
+</code></pre>
+
+<p>Insert the correctly formatted data to your new table.</p>
+<pre><code class="language-sql">SET DATEFORMAT ymd
+
+INSERT INTO [BSPP].[data]
+SELECT CONVERT(datetime, [Date], 121)
+	,IIF([Longitude] NOT LIKE 'NULL', CAST([Longitude]  As float), NULL)
+	,IIF([Latitude] NOT LIKE 'NULL', CAST([Latitude]  As float), NULL)
+	,IIF([Véhicule de secours] NOT LIKE 'NULL', CAST([Véhicule de secours] As INT), NULL)
+	,IIF([Famille de véhicule de secours] NOT LIKE 'NULL', [Famille de véhicule de secours], NULL)
+	,IIF([Statut opérationnel] NOT LIKE 'NULL', [Statut opérationnel], NULL)
+	,IIF([Numéro Intervention] NOT LIKE 'NULL', CAST([Numéro Intervention] As INT), NULL)
+	,IIF([Type d'intervention] NOT LIKE 'NULL', [Type d'intervention], NULL) As [Type d'intervention]
+	,IIF([Disponibilité du moyen de secours] NOT LIKE 'NULL', CAST([Disponibilité du moyen de secours] AS BIT), NULL)
+	,IIF([Centre de secours] NOT LIKE 'NULL', CAST([Centre de secours] AS INT), NULL)
+FROM [data-challenge].[dbo].[data] 
+</code></pre>
+
+<h4 id="querying-sql-server-from-a-jupyter-notebook">Querying SQL Server from a Jupyter Notebook</h4>
+
+<p>Once you have completed the first phase of your data analysis and manipulation within SQL Server Management Studio, you will want to be able to query the Microsoft SQL Server database from the Jupyter Notebook.</p>
+
+<p>To query SQL Server in Python you can use the package <code>pymmsql</code> (this package distributed under conda-forge is only for linux-64 and osx-64, so choose the one distributed by anaconda).</p>
+
+<pre><code class="language-console">conda install -c anaconda pymssql
+</code></pre>
+
+<p>To directly execute row SQL queries within a Jupyter Notebook you can use the ipython-sql package.</p>
+
+<pre><code class="language-console">conda install -c conda-forge ipython-sql
+</code></pre>
+
+<div class="card-panel teal lighten-4">
+The ability to create an <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">environnement</a> with Anaconda for this package caused me problems, so I used the default Python 3.7 environment.
+</div>
+
+<p>From now on in a Jupyter Notebook, you can enter SQL queries as follows:</p>
+<center><img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/01-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></center>
+
+<p><b>Connection strings</b></p>
+
+<ul>
+  <li>without identifiers
+    <pre><code class="language-console">%sql mssql+pyodbc://@serveur/base_de_donnees?driver=SQL+Server+Native+Client+11.0
+</code></pre>
+  </li>
+  <li>avec identifiers
+    <pre><code class="language-console">%sql mssql+pyodbc://login_utilisateur:mot_de_passe@serveur/base_de_donnees?driver=SQL+Server+Native+Client+11.0
+</code></pre>
+  </li>
+</ul>
+
+<p style="text-align: right;"><a href="/data-challenge/challenge.html">Access the challenge <i class="material-icons" style="vertical-align:middle">fast_forward</i></a></p>
+
+:ET

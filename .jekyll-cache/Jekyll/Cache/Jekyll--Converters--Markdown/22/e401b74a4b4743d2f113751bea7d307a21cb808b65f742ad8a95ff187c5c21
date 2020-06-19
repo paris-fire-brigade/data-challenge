@@ -1,0 +1,11 @@
+I"*<div class="row">
+  <div class="col grid s12 m6 l3">
+    <img src="/data-challenge/images/anaconda.png" class="responsive-img" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    The easiest way to install Python and Jupyter Notebook is probably with Anaconda. <br />
+     <br />
+     Anaconda is a free and open source ditribution of Python and R programming languages particularly oriented for applications in data science. One of the major assets of Anaconda is its simplification in the management of packages and their dependencies.
+  </div>
+</div>
+:ET

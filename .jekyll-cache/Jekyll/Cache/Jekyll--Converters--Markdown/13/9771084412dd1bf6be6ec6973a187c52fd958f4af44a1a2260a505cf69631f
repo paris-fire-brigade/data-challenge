@@ -1,0 +1,177 @@
+I"$<div class="row">
+  <div class="col grid s12 m6 l3" height="">
+    <img src="/data-challenge/images/db_python.png" class="responsive-img" style="padding-top: 20px" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    Pour ceux à l'aise en SQL, il peut être pertinent d'importer dans un premier temps le jeu de données au sein d'une base de données pour conduire une première phase d'exploration et de manipulation.<br />
+    	<br />
+    Une fois cette première phase réalisée, Python sera utilisé pour une deuxième phase d'analyse, l'exploitation et le rendu de la donnée.
+  </div>
+</div>
+
+<ul>
+  <li><big>Au sein Microsoft Windows</big>
+    <ul>
+      <li>j’opterai pour <a href="https://www.microsoft.com/fr-fr/sql-server/sql-server-editions-express">SQL Server 2017 Express Edition</a> comme système de base de données</li>
+      <li>et <a href="https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017">SQL Server Management Studio (SSMS)</a> pour l’administrer et l’interroger.</li>
+    </ul>
+  </li>
+  <li><big>Au sein d’un environnement Linux ou Mac OS</big>
+    <ul>
+      <li>j’opterai pour une base de données PostgreSQL</li>
+      <li>et pgAdmin 4 pour l’administrer et l’interroger.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="exemple-sous-windows">Exemple sous Windows</h2>
+
+<h4 id="installation-de-microsoft-sql-server-et-ssms">Installation de Microsoft SQL Server et SSMS</h4>
+<p>Télécharger <b><a href="https://www.microsoft.com/fr-fr/sql-server/sql-server-editions-express">SQL Server 2017 Express Edition</a></b>.</p>
+
+<p>Lancez l’exécutable et suivez les instructions d’installation.</p>
+
+<p>Suite à cette installation votre ordinateur aura besoin de redémarrer.</p>
+
+<p>Une fois redémarré, dans la même langue que votre installation SQL Server téléchargez et installez <b><a href="https://docs.microsoft.com/fr-fr/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017">SQL Server Management Studio</a></b>.</p>
+
+<p>Une fois installé, ouvrez <b>SQL Server Management Studio</b> (menu <b>Démarrer &gt; Microsoft SQL Server Tools 17 &gt; Microsoft SQL Server Management Studio</b>).</p>
+
+<p>Une instance de Microsoft SQL Server Express devrait automatiquement être détectée et proposée à la connexion (dans le cas contraire <b>Nom du serveur &gt; Parcourir… &gt; Moteur de base de données &gt; DESKTOP-XXXXX</b>).</p>
+
+<p>Cliquez sur <b>Connexion</b>.</p>
+
+<h4 id="importation-des-données-en-base-de-données">Importation des données en base de données</h4>
+
+<p>Créez une nouvelle base de données depuis l’<b>Explorateur d’objets</b>  en faisant un clic droit sur le dossier <b>Base de données</b>.</p>
+
+<p>Donnez lui un nom. et cliquez sur <b>OK</b>.</p>
+
+<p>Faites un <b>clic droit</b> sur votre nouvelle base de données <b>&gt; Tâches &gt; Importer des données…</b>
+<img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/02-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p>Sélectionnez pour <b>Source de données : Source du fichier plat</b>.</p>
+
+<p><b>Suivant</b></p>
+
+<p>Comme nom de fichier, allez chercher via le bouton <b>Parcourir…</b> le <a href="/data-challenge/data/data.zip">fichier data.csv</a> (sélectionnez le format de Fichiers CSV) préalablement téléchargé et décompressé.</p>
+
+<p><b>Ouvrir</b></p>
+
+<p>Assurez-vous que le champ <b>Page de codes</b> ait bien la valeur : <b>65001 (UTF-8)</b>.
+<img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/03-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p>Via l’onglet <b>Avancé</b>, modifiez uniquement le <b>DataType</b> de la colonne <b>Statut opérationnel</b> en <b>chaîne Unicode [DT_WSTR]</b>.
+<img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/04-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p><b>Suivant</b></p>
+
+<p><b>Destination : SQL Server Native Client 11.0</b></p>
+
+<p><b>Suivant</b></p>
+
+<p>Cliquez sur <b>Modifier les mappages…</b>.</p>
+
+<p>Modifiez le type de la colonne <b>Statut opérationnel</b> en <b>nvarchar</b>.</p>
+
+<p><b>OK</b></p>
+
+<p><b>Suivant</b></p>
+
+<p><b>Terminer</b></p>
+
+<p>Dans l’<b>Explorateur d’objets</b>, suite un dans l’Explorateur d’objets sur le nom de la base de données <b>&gt; Actualiser</b> vous devriez voir apparaitre votre table : <b>dbo.data</b>.</p>
+
+<p>Vous pouvez y vérifier les données par un clic droit sur le nom de la table <b>&gt; Sélectionner les 1000 première lignes</b>.
+<img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/05-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></p>
+
+<p>Nos données ont bien été chargées mais les types ne sont pas optimaux.</p>
+
+<p>Nous allons donc créer une nouvelle table bénéficiant des typages adaptés.</p>
+
+<p>Faites un clic droit sur votre table <b>&gt; Générer un script de la table en tant que &gt; CREATE To &gt; Nouvelle fenêtre d’éditeur de requête</b>.</p>
+
+<p>Et modifiez ce dernier de la manière suivante (ici un shéma dédié a été créé).</p>
+
+<pre><code class="language-sql">USE [data-challenge]
+GO
+
+/****** Object:  Table [dbo].[data]    Script Date: 15/12/2018 10:25:00 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE SCHEMA BSPP
+GO
+
+CREATE TABLE [BSPP].[data](
+	[Date] [Datetime] NULL,
+	[Longitude] float NULL,
+	[Latitude] float NULL,
+	[Véhicule de secours] int NULL,
+	[Famille de véhicule de secours] [varchar](50) NULL,
+	[Statut opérationnel] [nvarchar](50) NULL,
+	[Numéro Intervention] int NULL,
+	[Type d'intervention] [varchar](50) NULL,
+	[Disponibilité du moyen de secours] bit NULL,
+	[Centre de secours] int NULL
+) ON [PRIMARY]
+GO
+</code></pre>
+
+<p>Insérez à votre nouvelle table les données correctement formatées.</p>
+<pre><code class="language-sql">SET DATEFORMAT ymd
+
+INSERT INTO [BSPP].[data]
+SELECT CONVERT(datetime, [Date], 121)
+	,IIF([Longitude] NOT LIKE 'NULL', CAST([Longitude]  As float), NULL)
+	,IIF([Latitude] NOT LIKE 'NULL', CAST([Latitude]  As float), NULL)
+	,IIF([Véhicule de secours] NOT LIKE 'NULL', CAST([Véhicule de secours] As INT), NULL)
+	,IIF([Famille de véhicule de secours] NOT LIKE 'NULL', [Famille de véhicule de secours], NULL)
+	,IIF([Statut opérationnel] NOT LIKE 'NULL', [Statut opérationnel], NULL)
+	,IIF([Numéro Intervention] NOT LIKE 'NULL', CAST([Numéro Intervention] As INT), NULL)
+	,IIF([Type d'intervention] NOT LIKE 'NULL', [Type d'intervention], NULL) As [Type d'intervention]
+	,IIF([Disponibilité du moyen de secours] NOT LIKE 'NULL', CAST([Disponibilité du moyen de secours] AS BIT), NULL)
+	,IIF([Centre de secours] NOT LIKE 'NULL', CAST([Centre de secours] AS INT), NULL)
+FROM [data-challenge].[dbo].[data] 
+</code></pre>
+
+<p>Vous pouvez désormais manipuler de manière optimale au sein de SQL Server Management Studio.</p>
+
+<h4 id="interrogation-de-sql-server-à-partir-dun-jupyter-notebook">Interrogation de SQL Server à partir d’un Jupyter Notebook</h4>
+
+<p>Une fois votre première phase d’analyse et de manipulation au sein de SQL Server Management Studio réalisée, vous voudrez pouvoir requêter votre base de données Microsoft SQL Server à partir du Jupyter Notebook.</p>
+
+<p>Pour interroger SQL Server en Python vous pouvez utiliser le package <code>pymmsql</code> (ce package distribué sous conda-forge n’est destiné qu’aux plateformes linux-64 et osx-64, optez donc pour celui distribué par anaconda).</p>
+<pre><code class="language-console">conda install -c anaconda pymssql
+</code></pre>
+
+<p>Pour exécuter très simplement des requêtes SQL au sein d’un Jupyter Notebook vous pouvez utiliser le package <code>ipython-sql</code>.</p>
+<pre><code class="language-console">conda install -c conda-forge ipython-sql
+</code></pre>
+
+<div class="card-panel teal lighten-4">
+La possibilité de créer un <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">environnement</a> avec Anaconda pour ce package m'a posé des problèmes, j'ai donc utilisé l'environnement Python 3.7 par défaut.
+</div>
+
+<p>Dorénavant au sein d’un Jupyter Notebook, vous pouvez saisir des requêtes SQL de la manière suivante :</p>
+<center><img src="/data-challenge/images/04-exploitation-des-donnees-au-sein-d-une-bdd/01-exploitation-des-donnees-au-sein-d-une-bdd.png" class="responsive-img" style="padding-top: 20px" /></center>
+
+<p><b>Chaînes de connexion</b></p>
+
+<ul>
+  <li>sans identifiants
+    <pre><code class="language-console">%sql mssql+pyodbc://@serveur/base_de_donnees?driver=SQL+Server+Native+Client+11.0
+</code></pre>
+  </li>
+  <li>avec identifiants
+    <pre><code class="language-console">%sql mssql+pyodbc://login_utilisateur:mot_de_passe@serveur/base_de_donnees?driver=SQL+Server+Native+Client+11.0
+</code></pre>
+  </li>
+</ul>
+
+<p style="text-align: right;"><a href="/data-challenge/defi.html">Accéder au challenge <i class="material-icons" style="vertical-align:middle">fast_forward</i></a></p>
+
+:ET

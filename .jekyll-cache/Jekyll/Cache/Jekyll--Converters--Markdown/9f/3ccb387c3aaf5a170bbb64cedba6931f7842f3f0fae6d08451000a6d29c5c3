@@ -1,0 +1,19 @@
+I"�<div class="row">
+  <div class="col grid s12 m6 l3">
+    <img src="/data-challenge/images/libraries.jpg" class="responsive-img" />
+  </div>
+  <div class="col grid s12 m6 l9 ">
+    <ul>
+      <li>L'incontournable ipyleaflet</li>
+      <li>Majeures bibliothèques Python de data visualization
+        <ul>
+          <li>Matplotlib</li>
+          <li>Seaborn</li>
+          <li>Bokeh</li>
+        </ul>
+      </li>
+      <li>OSMnx - Analyse de réseau routier en Python</li>
+    </ul>
+  </div>
+</div>
+:ET
